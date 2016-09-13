@@ -19,8 +19,8 @@
             <version>${zlibsvm.version}</version>
         </dependency>
         <dependency>
-            <groupId>tw.edu.ntu.csie.libsvm</groupId>
-            <artifactId>libsvm-core</artifactId>
+            <groupId>tw.edu.ntu.csie</groupId>
+            <artifactId>libsvm</artifactId>
             <version>${libsvm.version}</version>
         </dependency>
         <!-- 3rd party  -->
@@ -28,6 +28,20 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons.lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

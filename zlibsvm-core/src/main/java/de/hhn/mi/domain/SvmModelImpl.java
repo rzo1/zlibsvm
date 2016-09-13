@@ -23,8 +23,8 @@ import de.hhn.mi.configuration.KernelType;
 import de.hhn.mi.configuration.SvmConfigurationImpl;
 import de.hhn.mi.configuration.SvmType;
 import de.hhn.mi.util.PrimitiveHelper;
-import tw.edu.ntu.csie.libsvm.svm_model;
-import tw.edu.ntu.csie.libsvm.svm_parameter;
+import libsvm.svm_model;
+import libsvm.svm_parameter;
 
 import java.util.List;
 import java.util.Map;

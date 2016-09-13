@@ -21,7 +21,7 @@ package de.hhn.mi.util;
 
 import de.hhn.mi.domain.SvmFeature;
 import de.hhn.mi.domain.SvmFeatureImpl;
-import tw.edu.ntu.csie.libsvm.svm_node;
+import libsvm.svm_node;
 
 import java.util.*;
 

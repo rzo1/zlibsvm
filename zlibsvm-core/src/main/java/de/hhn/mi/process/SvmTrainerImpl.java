@@ -27,9 +27,9 @@ import de.hhn.mi.domain.SvmDocument;
 import de.hhn.mi.domain.SvmModel;
 import de.hhn.mi.domain.SvmModelImpl;
 import de.hhn.mi.exception.ClassificationCoreException;
+import libsvm.svm_node;
+import libsvm.svm_problem;
 import org.slf4j.Logger;
-import tw.edu.ntu.csie.libsvm.svm_node;
-import tw.edu.ntu.csie.libsvm.svm_problem;
 
 import java.util.List;
 

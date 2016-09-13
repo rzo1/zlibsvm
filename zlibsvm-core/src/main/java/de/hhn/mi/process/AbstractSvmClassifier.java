@@ -23,9 +23,9 @@ import de.hhn.mi.domain.SvmDocument;
 import de.hhn.mi.domain.SvmMetaInformation;
 import de.hhn.mi.domain.SvmModel;
 import de.hhn.mi.util.PrimitiveHelper;
+import libsvm.svm;
+import libsvm.svm_model;
 import org.apache.commons.lang3.ArrayUtils;
-import tw.edu.ntu.csie.libsvm.svm;
-import tw.edu.ntu.csie.libsvm.svm_model;
 
 import java.util.List;
 

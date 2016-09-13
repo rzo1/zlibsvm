@@ -22,9 +22,9 @@ package de.hhn.mi.process;
 import de.hhn.mi.configuration.SvmConfiguration;
 import de.hhn.mi.domain.SvmDocument;
 import de.hhn.mi.domain.SvmFeature;
+import libsvm.svm_node;
+import libsvm.svm_parameter;
 import org.apache.commons.lang3.ArrayUtils;
-import tw.edu.ntu.csie.libsvm.svm_node;
-import tw.edu.ntu.csie.libsvm.svm_parameter;
 
 import java.util.List;
 

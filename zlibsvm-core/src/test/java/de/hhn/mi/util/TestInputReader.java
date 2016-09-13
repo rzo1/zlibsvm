@@ -21,7 +21,7 @@ package de.hhn.mi.util;
 
 import de.hhn.mi.domain.*;
 import de.hhn.mi.mock.SvmDocumentMock;
-import tw.edu.ntu.csie.libsvm.svm;
+import libsvm.svm;
 
 import java.io.BufferedReader;
 import java.io.IOException;
