@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.hhn.mi</groupId>
+    <artifactId>zlibsvm</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>zlibsvm-api</module>
+        <module>zlibsvm-core</module>
+    </modules>
+
+    <licenses>
+        <license>
+            <name>Apache 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>Heilbronn University - Medical Informatics</name>
+        <url>http://www.mi.hs-heilbronn.de</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>rzo1</id>
+            <name>Richard Zowalla</name>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <email>richard.zowalla@hs-heilbronn.de</email>
+            <organization>University of Heilbronn - Medical Informatics</organization>
+            <organizationUrl>http://www.mi.hs-heilbronn.de</organizationUrl>
+        </developer>
+        <developer>
+            <id>mawiesne</id>
+            <name>Martin Wiesner</name>
+            <email>martin.wiesner@hs-heilbronn.de</email>
+            <organization>University of Heilbronn - Medical Informatics</organization>
+            <organizationUrl>http://www.mi.hs-heilbronn.de</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <properties>
+        <!-- Maven specific settings -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+        <maven.compile.encoding>UTF-8</maven.compile.encoding>
+        <java.source>1.8</java.source>
+        <java.target>1.8</java.target>
+        <license.licenseName>apache_v2</license.licenseName>
+
+        <!-- Application settings -->
+        <copyright.year>2016</copyright.year>
+        <license.inceptionYear>2014</license.inceptionYear>
+
+        <zlibsvm.version>1.0-SNAPSHOT</zlibsvm.version>
+        <libsvm.version>3.20</libsvm.version>
+        <!-- apache commons stuff -->
+        <commons.lang3.version>3.4</commons.lang3.version>
+        <commons.lang.version>2.6</commons.lang.version>
+        <commons.io.version>2.4</commons.io.version>
+        <commons.compress.version>1.8.1</commons.compress.version>
+        <commons.math.version>2.2</commons.math.version>
+        <commons.collections.version>3.2.2</commons.collections.version>
+        <commons.dbcp.version>1.4</commons.dbcp.version>
+        <commons.cli.version>1.3.1</commons.cli.version>
+
+        <!-- additional dependencies -->
+        <junit.version>4.12</junit.version>
+
+        <slf4j.version>1.7.21</slf4j.version>
+        <log4j.version>1.2.16</log4j.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>1.9</version>
+
+                    <configuration>
+                        <verbose>false</verbose>
+                        <includes>
+                            <includes>**/*.java</includes>
+                        </includes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>generate-license-headers</id>
+                            <goals>
+                                <goal>update-file-header</goal>
+                            </goals>
+                            <phase>process-sources</phase>
+                            <configuration>
+                                <roots>
+                                    <root>src/main/java</root>
+                                    <root>src/test/java</root>
+                                </roots>
+                                <addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+                                <processStartTag>
+                                    ========================LICENSE_START=================================
+                                </processStartTag>
+                                <processEndTag>=========================LICENSE_END==================================
+                                </processEndTag>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.5.1</version>
+                    <configuration>
+                        <source>${java.source}</source>
+                        <target>${java.target}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.1.2</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.10.3</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <javadocExecutable>${java.home}/../bin/javadoc</javadocExecutable>
+                        <links>
+                            <link>http://docs.oracle.com/javase/8/docs/api/</link>
+                        </links>
+                        <encoding>utf-8</encoding>
+                        <show>public</show>
+                        <!-- Speeds up the build of the javadocs -->
+                        <quiet>true</quiet>
+                        <use>false</use>
+                        <!-- Use this in JDK 8 environment to skip hard java doc syntax check. -->
+                        <additionalparam>-Xdoclint:none</additionalparam>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.19.1</version>
+                    <configuration>
+                        <argLine>-Xmx512m -XX:+CMSClassUnloadingEnabled -Dfile.encoding=UTF-8
+                        </argLine>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+</project>
