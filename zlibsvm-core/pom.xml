@@ -3,18 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
+        <groupId>de.hs-heilbronn.mi</groupId>
         <artifactId>zlibsvm</artifactId>
-        <groupId>de.hsheilbronn.mi</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.hsheilbronn.mi</groupId>
     <artifactId>zlibsvm-core</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>de.hsheilbronn.mi</groupId>
+            <groupId>de.hs-heilbronn.mi</groupId>
             <artifactId>zlibsvm-api</artifactId>
             <version>${zlibsvm.version}</version>
         </dependency>
@@ -70,19 +69,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>deployment</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 </project>
