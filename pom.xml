@@ -14,6 +14,12 @@
         <module>zlibsvm-core</module>
     </modules>
 
+    <scm>
+        <connection>scm:git:git://github.com/rzo1/zlibsvm.git</connection>
+        <developerConnection>scm:git:git@github.com:rzo1/zlibsvm.git</developerConnection>
+        <url>http://github.com/rzo1/zlibsvm</url>
+    </scm>
+
     <licenses>
         <license>
             <name>Apache 2.0</name>
@@ -139,6 +145,20 @@
                                 <processEndTag>=========================LICENSE_END==================================
                                 </processEndTag>
                             </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>1.6</version>
+                    <executions>
+                        <execution>
+                            <id>sign-artifacts</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
                         </execution>
                     </executions>
                 </plugin>
