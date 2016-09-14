@@ -43,7 +43,7 @@ import static org.junit.Assert.fail;
  */
 public class SvmTrainingTestCase {
 
-    private static final String MODE_NAME = "TEST";
+    private static final String MODEL_NAME = "TEST";
     private static final double DELTA = 0.005d;
     private static List<SvmDocument> svmDocuments;
     private static SvmModel referenceModel;
@@ -78,7 +78,7 @@ public class SvmTrainingTestCase {
         failed = false;
 
         try {
-            new SvmTrainerImpl(config, MODE_NAME).train(null);
+            new SvmTrainerImpl(config, MODEL_NAME).train(null);
             failed = true;
         } catch (AssertionError ae) {
 
@@ -94,7 +94,7 @@ public class SvmTrainingTestCase {
         failed = false;
 
         try {
-            new SvmTrainerImpl(config, MODE_NAME).train(new ArrayList<>());
+            new SvmTrainerImpl(config, MODEL_NAME).train(new ArrayList<>());
             failed = true;
         } catch (AssertionError ae) {
 
@@ -120,7 +120,7 @@ public class SvmTrainingTestCase {
     public void testAgainstReferenceTrainingModel() {
 
         SvmTrainer trainer = new SvmTrainerImpl(new SvmConfigurationImpl.Builder().build(),
-                MODE_NAME);
+                MODEL_NAME);
 
         SvmModel ownModel = trainer.train(svmDocuments);
 

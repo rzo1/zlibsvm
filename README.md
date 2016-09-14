@@ -1,10 +1,124 @@
-#zlibsvm
+#zlibsvm [![Build Status](https://travis-ci.org/rzo1/zlibsvm.svg?branch=master)](https://travis-ci.org/rzo1/zlibsvm)   ![Maven Central](https://img.shields.io/maven-central/v/de.hs-heilbronn.mi/zlibsvm.svg?style=flat-square)
+
 **zlibsvm** is an object-oriented, easy to use and simple Java binding for the famous **LIBSVM** library hosted on [GitHub](https://github.com/cjlin1/libsvm).
 
 It encapsulates the cross-compiled Java code from **LIBSVM** behind an object-oriented API which can be easily used via Apache Maven in your own projects.
 
-##Build-Status
+### Using Maven
 
-[![Build Status](https://travis-ci.org/rzo1/zlibsvm.svg?branch=master)](https://travis-ci.org/rzo1/zlibsvm)
+To use the latest release of **zlibsvm**, please use the following snippet in your pom.xml
 
-##How to start
+```xml
+    <dependency>
+        <groupId>de.hs-heilbronn.mi/groupId>
+        <artifactId>zlibsvm-core</artifactId>
+        <version>1.0</version>
+    </dependency>
+```
+
+### Quickstart
+
+First of all, you need to implement your custom `SvmDocument` and a custom `SvmFeature`, which could be like:
+
+```java
+      public class SvmDocumentImpl implements SvmDocument {
+      
+          private final List<SvmFeature> features;
+          private List<SvmClassLabel> classLabels = new ArrayList<>();
+      
+          public SvmDocumentImpl(List<SvmFeature> features) {
+              this.features = features;
+          }
+      
+          public List<SvmFeature> getSvmFeatures() {
+              return features;
+          }
+      
+          public SvmClassLabel getClassLabelWithHighestProbability() {
+              if (classLabels.isEmpty()) {
+                  return null;
+              }
+      
+              return Collections.max(classLabels);
+          }
+      
+          @Override
+          public List<SvmClassLabel> getAllClassLabels() {
+              return Collections.unmodifiableList(classLabels);
+          }
+      
+          @Override
+          public void addClassLabel(SvmClassLabel classLabel) {
+              assert (classLabel != null);
+              this.classLabels.add(classLabel);
+          }
+            
+      }
+      
+```
+
+```java
+     public class SvmFeatureImpl implements SvmFeature {
+     
+         private int index;
+         private double value;
+     
+         public SvmFeatureImpl(int index, double value) {
+             this.index = index;
+             this.value = value;
+         }
+     
+         public int getIndex() {
+             return index;
+         }
+     
+         public double getValue() {
+             return value;
+         }
+     
+         public void setIndex(int index) {
+             this.index = index;
+     
+         }
+     
+         public void setValue(double value) {
+             this.value = value;
+     
+         }
+     
+         @Override
+         public int compareTo(SvmFeature o) {
+             throw new UnsupportedOperationException("not needed for mock");
+         }
+     }
+      
+```
+
+To obtain an `SvmModel` the SVM needs to be trained. This is done via an `SvmConfigurationImpl.Builder()`, which is used to specify your custom SVM configuration.
+ 
+The default configuration is the same as described [here](https://github.com/cjlin1/libsvm): C_SVC, RBF-Kernel with gamma 0 and cost 1.
+
+```java
+        SvmTrainer trainer = new SvmTrainerImpl(new SvmConfigurationImpl.Builder().build(),"my-custom-trained-model");
+
+        SvmModel model = trainer.train(documentsForTraining);
+
+```
+
+After this step it is possible to use this `SvmModel` for prediction.
+
+```java
+         SvmClassifier classifier = new SvmClassifierImpl(model);
+        
+         List<SvmDocument> classified = classifier.classify(documentsForPrediction, true);
+         
+         for(SvmDocument d : classified) {
+            System.out.println(d.toString() + " was classified as category:" + d.getClassLabelWithHighestProbability().getNumeric());
+         }
+                  
+```
+
+
+### License
+
+Published under [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
