@@ -7,7 +7,7 @@
     <groupId>de.hs-heilbronn.mi</groupId>
     <artifactId>zlibsvm</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
 
     <name>zlibsvm</name>
     <description>A Java binding for the famous LIBSVM library</description>
@@ -74,7 +74,7 @@
         <copyright.year>2016</copyright.year>
         <license.inceptionYear>2014</license.inceptionYear>
 
-        <zlibsvm.version>1.0</zlibsvm.version>
+        <zlibsvm.version>1.1-SNAPSHOT</zlibsvm.version>
         <libsvm.version>3.17</libsvm.version>
         <!-- apache commons stuff -->
         <commons.lang3.version>3.4</commons.lang3.version>
