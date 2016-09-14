@@ -10,7 +10,7 @@ To use the latest release of **zlibsvm**, please use the following snippet in yo
 
 ```xml
     <dependency>
-        <groupId>de.hs-heilbronn.mi/groupId>
+        <groupId>de.hs-heilbronn.mi</groupId>
         <artifactId>zlibsvm-core</artifactId>
         <version>1.0</version>
     </dependency>
