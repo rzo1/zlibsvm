@@ -18,6 +18,32 @@ To use the latest release of **zlibsvm**, please use the following snippet in yo
 
 ### Quickstart
 
+#### Dataset Format
+
+The dataset format for [LIBSVM](https://www.csie.ntu.edu.tw/~cjlin/libsvm/) is 
+
+    label feature_id1:feature_value1 feature_id2:feature_value2 ...
+
+Thus, every feature (or value) needs its own unique identifier.
+
+For three different class labels `1,2,3` and a feature set consisting of `a(id=1),b(id=2),c=(id=3)`, a valid data representation for  three data points `d1,d2,d3` would be
+
+    2 1:0.5325 3:0.523
+    
+    3 2:0.7853 3:0.6326
+    
+    1 1:0.53265 2:0.5422
+
+Meaning:
+
+ - `d1` contains feature `a(id=1)` and `c(id=3)`
+ - `d2` contains feature `b(id=2)` and `c(id=3)`
+ - `d3` contains feature `a(id=1)` and `b(id=2)`
+
+Note, that it is not necessary to provide `feature_id1:feature_value1` for features, which are not contained in the given data point.
+
+#### Training and Prediction
+
 First of all, you need to implement your custom `SvmDocument` and a custom `SvmFeature`, which could be like:
 
 ```java
