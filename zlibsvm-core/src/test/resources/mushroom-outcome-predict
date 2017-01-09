@@ -1,4 +1,3 @@
-#The last 156 data sets out of the mushroom data (classified by LIBSVM v3.17 with default parameters and enabled prediction) from http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/
 1.0 0.9996977748972845 3.0222510271555296E-4
 2.0 0.0027251428062746936 0.9972748571937254
 2.0 0.020567339200617075 0.9794326607993831
