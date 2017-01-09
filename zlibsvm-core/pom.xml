@@ -18,7 +18,7 @@
             <version>${zlibsvm.version}</version>
         </dependency>
         <dependency>
-            <groupId>tw.edu.ntu.csie</groupId>
+            <groupId>com.datumbox</groupId>
             <artifactId>libsvm</artifactId>
             <version>${libsvm.version}</version>
         </dependency>

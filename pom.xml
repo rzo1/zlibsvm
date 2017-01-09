@@ -75,7 +75,7 @@
         <license.inceptionYear>2014</license.inceptionYear>
 
         <zlibsvm.version>1.1-SNAPSHOT</zlibsvm.version>
-        <libsvm.version>3.17</libsvm.version>
+        <libsvm.version>3.22</libsvm.version>
         <!-- apache commons stuff -->
         <commons.lang3.version>3.4</commons.lang3.version>
         <commons.lang.version>2.6</commons.lang.version>
