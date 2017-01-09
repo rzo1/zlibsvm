@@ -22,8 +22,10 @@ package de.hsheilbronn.mi.process;
 import de.hsheilbronn.mi.configuration.SvmConfiguration;
 import de.hsheilbronn.mi.domain.SvmDocument;
 import de.hsheilbronn.mi.domain.SvmFeature;
+import libsvm.svm;
 import libsvm.svm_node;
 import libsvm.svm_parameter;
+import libsvm.svm_print_interface;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
@@ -58,6 +60,15 @@ public abstract class AbstractSvmTool {
         List<Double> weight = configuration.getWeight();
 
         param.weight = ArrayUtils.toPrimitive(weight.toArray(new Double[weight.size()]));
+
+        if(configuration.isQuietMode()) {
+            svm.svm_set_print_string_function(new svm_print_interface() {
+                @Override
+                public void print(String s) {
+                    //nothing to do here...
+                }
+            });
+        }
         return param;
     }
 

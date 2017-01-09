@@ -62,4 +62,6 @@ public interface SvmConfiguration  extends Serializable {
     int getCrossValidation();
 
     int getNFold();
+
+    boolean isQuietMode();
 }

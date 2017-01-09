@@ -166,7 +166,16 @@ public interface SvmConfigurationBuilder extends Serializable {
     SvmConfigurationBuilder setCrossValidation(boolean crossValidation, int nFold);
 
     /**
+     * quiet mode (no outputs)
+     * @param quiteMode <code>true</code if it should reduce output, else <code>false</code>
+     * @return this {@link SvmConfigurationBuilder builder}
+     */
+    SvmConfigurationBuilder setQuietMode(boolean quiteMode);
+
+    /**
      * @return a fully configured {@link SvmConfiguration configuration}
      */
     SvmConfiguration build();
+
 }
+

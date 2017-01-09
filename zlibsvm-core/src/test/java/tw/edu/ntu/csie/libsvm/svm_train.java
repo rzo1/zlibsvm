@@ -291,7 +291,8 @@ public class svm_train {
         Vector<Double> vy = new Vector<Double>();
         Vector<svm_node[]> vx = new Vector<svm_node[]>();
         int max_index = 0;
-
+        //skip first line because of meta information
+        fp.readLine();
         while(true)
         {
             String line = fp.readLine();

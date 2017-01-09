@@ -46,6 +46,7 @@ public class SvmConfigurationImpl implements SvmConfiguration {
     private final int[] weightLabel;
     private final double[] weight;
     private final int nFold;
+    private boolean quietMode;
 
     private SvmConfigurationImpl(Builder builder) {
         this.svmType = builder.svmType;
@@ -66,6 +67,7 @@ public class SvmConfigurationImpl implements SvmConfiguration {
         this.weight = builder.weight;
 
         this.nFold = builder.nFold;
+        this.quietMode = builder.quietMode;
     }
 
     @Override
@@ -76,6 +78,11 @@ public class SvmConfigurationImpl implements SvmConfiguration {
     @Override
     public int getNFold() {
         return nFold;
+    }
+
+    @Override
+    public boolean isQuietMode() {
+        return quietMode;
     }
 
     @Override
@@ -229,6 +236,7 @@ public class SvmConfigurationImpl implements SvmConfiguration {
         private int[] weightLabel = new int[0];
         private double[] weight = new double[0];
         private int nFold = 0;
+        private boolean quietMode = true;
 
         /**
          * {@inheritDoc}
@@ -380,6 +388,15 @@ public class SvmConfigurationImpl implements SvmConfiguration {
             assert (!crossValidation || nFold >= 2);
             this.crossValidation = crossValidation ? 1 : 0;
             this.nFold = nFold;
+            return this;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public SvmConfigurationBuilder setQuietMode(boolean quietMode) {
+            this.quietMode = quietMode;
             return this;
         }
 
