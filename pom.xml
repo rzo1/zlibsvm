@@ -235,9 +235,7 @@
                             <bundledSignature>jdk-reflection</bundledSignature>
                             <!-- disallow undocumented classes like sun.misc.Unsafe: -->
                             <bundledSignature>jdk-non-portable</bundledSignature>
-                            <!-- interesting, yet inactive for the moment:
-                                 <bundledSignature>jdk-unsafe</bundledSignature>
-                            -->
+                            <bundledSignature>jdk-unsafe</bundledSignature>
                         </bundledSignatures>
                     </configuration>
                     <executions>

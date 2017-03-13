@@ -26,6 +26,7 @@ import libsvm.svm;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -40,7 +41,7 @@ public class TestInputReader {
     public List<SvmDocument> readFileProblem(String problem, boolean skipClassLabel) throws IOException {
 
         BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream
-                (problem)));
+                (problem), StandardCharsets.UTF_8));
         List<SvmDocument> documents = new ArrayList<>();
 
         String line;
@@ -76,15 +77,16 @@ public class TestInputReader {
 
     public SvmModel readSvmModel(String svmModel) throws IOException {
         BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream
-                (svmModel)));
+                (svmModel), StandardCharsets.UTF_8));
         fp.readLine(); //skip the first line because of header information
-        return new SvmModelImpl("TEST", new NativeSvmModelWrapper(new svm().svm_load_model(fp)));    //using unmodified libsvm core method to load a
-        // model
+
+        //using unmodified libsvm core method to load a model
+        return new SvmModelImpl("TEST", new NativeSvmModelWrapper(new svm().svm_load_model(fp)));
     }
 
     public List<SvmDocument> readClassifiedDocuments(String classifiedDocs, boolean predict) throws IOException {
         BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream
-                (classifiedDocs)));
+                (classifiedDocs), StandardCharsets.UTF_8));
         fp.readLine(); //skip the first line because of header information
         List<SvmDocument> classifiedDocuments = new ArrayList<>();
 
