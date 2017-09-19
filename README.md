@@ -20,7 +20,7 @@ To use the latest release of **zlibsvm**, please use the following snippet in yo
 
 #### Check UI-based Example
 
-A code example for [2D data] with a Swing UI can be found [here](https://github.com/rzo1/zlibsvm-example).
+A code example can be found [here](https://github.com/rzo1/zlibsvm-example).
 
 #### Dataset Format
 
@@ -118,7 +118,7 @@ First of all, you need to implement your custom `SvmDocument` and a custom `SvmF
      
          @Override
          public int compareTo(SvmFeature o) {
-             throw new UnsupportedOperationException("not needed for mock");
+             throw new UnsupportedOperationException("TODO: Implement this method for real use-cases");
          }
      }
       
