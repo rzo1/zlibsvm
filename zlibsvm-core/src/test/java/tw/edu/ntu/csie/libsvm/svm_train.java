@@ -57,6 +57,7 @@ import libsvm.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -300,7 +301,7 @@ public class svm_train {
 
     private void read_problem() throws IOException {
         BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream
-                (input_file_name)));
+                (input_file_name), StandardCharsets.UTF_8));
         Vector<Double> vy = new Vector<Double>();
         Vector<svm_node[]> vx = new Vector<svm_node[]>();
         int max_index = 0;
