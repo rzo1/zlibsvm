@@ -18,6 +18,10 @@ To use the latest release of **zlibsvm**, please use the following snippet in yo
 
 ### Quickstart
 
+#### Check UI-based Example
+
+A code example for [2D data] with a Swing UI can be found [here](https://github.com/rzo1/zlibsvm-example).
+
 #### Dataset Format
 
 The dataset format for [LIBSVM](https://www.csie.ntu.edu.tw/~cjlin/libsvm/) is 
