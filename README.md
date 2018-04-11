@@ -12,7 +12,7 @@ To use the latest release of **zlibsvm**, please use the following snippet in yo
     <dependency>
         <groupId>de.hs-heilbronn.mi</groupId>
         <artifactId>zlibsvm-core</artifactId>
-        <version>1.1</version>
+        <version>1.2</version>
     </dependency>
 ```
 
