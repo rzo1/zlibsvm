@@ -92,6 +92,7 @@
         <maven.javadoc.plugin>3.0.0</maven.javadoc.plugin>
         <forbiddenapis.plugin>2.5</forbiddenapis.plugin>
         <maven.surefire.plugin>2.21.0</maven.surefire.plugin>
+        <maven.gpg.plugin>1.6</maven.gpg.plugin>
     </properties>
 
     <dependencyManagement>
@@ -255,7 +256,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-gpg-plugin</artifactId>
-                    <version>1.6</version>
+                    <version>${maven.gpg.plugin}</version>
                     <executions>
                         <execution>
                             <id>sign-artifacts</id>
