@@ -91,7 +91,7 @@
         <maven.source.plugin>3.0.1</maven.source.plugin>
         <maven.javadoc.plugin>3.0.0</maven.javadoc.plugin>
         <forbiddenapis.plugin>2.5</forbiddenapis.plugin>
-        <maven.surefire.plugin>2.21.0</maven.surefire.plugin>
+        <maven.surefire.plugin>2.22.0</maven.surefire.plugin>
         <maven.gpg.plugin>1.6</maven.gpg.plugin>
     </properties>
 
@@ -201,10 +201,10 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <javadocExecutable>${java.home}/../bin/javadoc</javadocExecutable>
-                        <links>
-                            <link>http://docs.oracle.com/javase/8/docs/api/</link>
-                        </links>
+                        <!--<javadocExecutable>${java.home}/../bin/javadoc</javadocExecutable>-->
+                        <!--<links>-->
+                            <!--<link>http://docs.oracle.com/javase/8/docs/api/</link>-->
+                        <!--</links>-->
                         <encoding>utf-8</encoding>
                         <show>public</show>
                         <!-- Speeds up the build of the javadocs -->
