@@ -78,7 +78,7 @@
         <zlibsvm.version>1.3-SNAPSHOT</zlibsvm.version>
         <libsvm.version>3.23</libsvm.version>
         <!-- apache commons stuff -->
-        <commons.lang3.version>3.7</commons.lang3.version>
+        <commons.lang3.version>3.8.1</commons.lang3.version>
 
         <!-- additional dependencies -->
         <junit.version>4.12</junit.version>
@@ -87,11 +87,11 @@
         <log4j.version>1.2.17</log4j.version>
 
         <maven.license.plugin>1.16</maven.license.plugin>
-        <maven.compiler.plugin>3.7.0</maven.compiler.plugin>
+        <maven.compiler.plugin>3.8.0</maven.compiler.plugin>
         <maven.source.plugin>3.0.1</maven.source.plugin>
-        <maven.javadoc.plugin>3.0.0</maven.javadoc.plugin>
-        <forbiddenapis.plugin>2.5</forbiddenapis.plugin>
-        <maven.surefire.plugin>2.22.0</maven.surefire.plugin>
+        <maven.javadoc.plugin>3.0.1</maven.javadoc.plugin>
+        <forbiddenapis.plugin>2.6</forbiddenapis.plugin>
+        <maven.surefire.plugin>2.22.1</maven.surefire.plugin>
         <maven.gpg.plugin>1.6</maven.gpg.plugin>
     </properties>
 
@@ -226,20 +226,11 @@
                     <artifactId>forbiddenapis</artifactId>
                     <version>${forbiddenapis.plugin}</version>
                     <configuration>
-                        <!--
-                          if the used Java version is too new,
-                          don't fail, just do nothing:
-                        -->
                         <failOnUnsupportedJava>false</failOnUnsupportedJava>
                         <bundledSignatures>
-                            <!--
-                              This will automatically choose the right
-                              signatures based on 'maven.compiler.target':
-                            -->
                             <bundledSignature>jdk-deprecated</bundledSignature>
                             <bundledSignature>jdk-internal</bundledSignature>
                             <bundledSignature>jdk-reflection</bundledSignature>
-                            <!-- disallow undocumented classes like sun.misc.Unsafe: -->
                             <bundledSignature>jdk-non-portable</bundledSignature>
                             <bundledSignature>jdk-unsafe</bundledSignature>
                         </bundledSignatures>
