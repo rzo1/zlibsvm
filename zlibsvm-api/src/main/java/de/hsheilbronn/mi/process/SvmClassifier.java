@@ -2,7 +2,7 @@
  * ========================LICENSE_START=================================
  * zlibsvm-api
  * %%
- * Copyright (C) 2014 - 2017 Heilbronn University - Medical Informatics
+ * Copyright (C) 2014 - 2019 Heilbronn University - Medical Informatics
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ public interface SvmClassifier {
     /**
      * Classifies the given documents.
      *
-     * @param documents            must not be <code>null</code>  or an empty {@link List list}.
+     * @param documents            must not be {@code null}  or an empty {@link List list}.
      * @param probabilityEstimates <code>true</code>  for probability estimates else false. Note well,
      *                             that this is only supported by SVC or SVR SVMs(see {@link SvmType})
      * @return classified documents

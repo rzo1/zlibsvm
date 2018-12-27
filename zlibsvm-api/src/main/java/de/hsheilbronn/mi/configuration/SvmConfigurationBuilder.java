@@ -2,7 +2,7 @@
  * ========================LICENSE_START=================================
  * zlibsvm-api
  * %%
- * Copyright (C) 2014 - 2017 Heilbronn University - Medical Informatics
+ * Copyright (C) 2014 - 2019 Heilbronn University - Medical Informatics
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import java.io.Serializable;
  * @author rz
  */
 public interface SvmConfigurationBuilder extends Serializable {
+
     /**
      * Determines the type of svm.
      * <ul>
@@ -104,9 +105,9 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Determines the parameter C (cost) of C-SVC, epsilon-SVR, and nu-SVR <b>default: 1</b>
      * <p>See also: paper by Gaspar, Carbonell and Oliveira (Univ. of Aveiro) in JIB V201,
-     * 2012: they describe C as penality weight</p>
+     * 2012: they describe C as penalty weight</p>
      *
-     * @param cost must be <code> > 0</code>
+     * @param cost must be greater than zero
      * @return this {@link SvmConfigurationBuilder builder}
      * @throws AssertionError if the given parameter is invalid.
      */
@@ -115,7 +116,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Determines the tolerance of termination criterion <b>default: 0.001</b>
      *
-     * @param epsilon must be <code> > 0 </code>
+     * @param epsilon must be greater than zero
      * @return this {@link SvmConfigurationBuilder builder}
      * @throws AssertionError if the given parameter is invalid.
      */
@@ -133,7 +134,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Determines whether to use shrinking heuristics. <b>default: true</b>
      *
-     * @param shrinking <code>true</code> if to use shrinking heuristics, else <code>false</code>
+     * @param shrinking {@code true} if to use shrinking heuristics, else <code>false</code>
      * @return this {@link SvmConfigurationBuilder builder}
      */
     SvmConfigurationBuilder setShrinking(boolean shrinking);
@@ -141,7 +142,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Determines whether to train a SVC or SVR model for probability estimates.  <b>default: false</b>
      *
-     * @param probability <code>true</code> if to train for probability estimates, else <code>false</code>
+     * @param probability {@code true} if to train for probability estimates, else <code>false</code>
      * @return this {@link SvmConfigurationBuilder builder}
      */
     SvmConfigurationBuilder setProbability(boolean probability);
@@ -158,7 +159,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Determines whether to use n-fold cross validation mode. <b>default: false</b>
      *
-     * @param crossValidation <code>true</code if to use n-fold cross validation mode, else <code>false</code>
+     * @param crossValidation {@code true} if to use n-fold cross validation mode, else {@code false}
      * @param nFold           must be <code>>= 2</code>
      * @return this {@link SvmConfigurationBuilder builder}
      * @throws AssertionError if the given parameter is invalid.
@@ -167,7 +168,7 @@ public interface SvmConfigurationBuilder extends Serializable {
 
     /**
      * quiet mode (no outputs)
-     * @param quiteMode <code>true</code if it should reduce output, else <code>false</code>
+     * @param quiteMode {@code true} if it should reduce output, else <code>false</code>
      * @return this {@link SvmConfigurationBuilder builder}
      */
     SvmConfigurationBuilder setQuietMode(boolean quiteMode);

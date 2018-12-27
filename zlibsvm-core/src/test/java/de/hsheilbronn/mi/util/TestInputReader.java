@@ -2,14 +2,14 @@
  * ========================LICENSE_START=================================
  * zlibsvm-core
  * %%
- * Copyright (C) 2014 - 2017 Heilbronn University - Medical Informatics
+ * Copyright (C) 2014 - 2019 Heilbronn University - Medical Informatics
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -37,79 +37,78 @@ import java.util.StringTokenizer;
  */
 public class TestInputReader {
 
-
     public List<SvmDocument> readFileProblem(String problem, boolean skipClassLabel) throws IOException {
 
-        BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream
-                (problem), StandardCharsets.UTF_8));
-        List<SvmDocument> documents = new ArrayList<>();
+        try(
+        BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(problem), StandardCharsets.UTF_8))) {
+            List<SvmDocument> documents = new ArrayList<>();
 
-        String line;
-        fp.readLine(); //skip the first line because of header information
-        while ((line = fp.readLine()) != null) {
+            String line;
 
-            StringTokenizer st = new StringTokenizer(line, " \t\n\r\f:");
-            SvmClassLabelImpl classLabel = new SvmClassLabelImpl(Double.parseDouble(st.nextToken()));
+            fp.readLine(); //skip the first line because of header information
+            while ((line = fp.readLine()) != null) {
 
-            int m = st.countTokens() / 2;
+                StringTokenizer st = new StringTokenizer(line, " \t\n\r\f:");
+                SvmClassLabelImpl classLabel = new SvmClassLabelImpl(Double.parseDouble(st.nextToken()));
 
-            List<SvmFeature> features = new ArrayList<>();
+                int m = st.countTokens() / 2;
 
-            for (int j = 0; j < m; j++) {
-                String featureIndex = st.nextToken();
-                String featureValue = st.nextToken();
-                SvmFeature sfi = new SvmFeatureImpl(Integer.parseInt(featureIndex), Double.parseDouble(featureValue));
-                features.add(sfi);
+                List<SvmFeature> features = new ArrayList<>();
+
+                for (int j = 0; j < m; j++) {
+                    String featureIndex = st.nextToken();
+                    String featureValue = st.nextToken();
+                    SvmFeature sfi = new SvmFeatureImpl(Integer.parseInt(featureIndex), Double.parseDouble(featureValue));
+
+                    features.add(sfi);
+                }
+                SvmDocument mock = new SvmDocumentMock(features);
+
+                if (!skipClassLabel)
+                    mock.addClassLabel(classLabel);
+
+                documents.add(mock);
             }
-            SvmDocument mock = new SvmDocumentMock(features);
-
-            if (!skipClassLabel)
-                mock.addClassLabel(classLabel);
-
-            documents.add(mock);
+            return documents;
         }
-
-        fp.close();
-
-        return documents;
-
     }
 
     public SvmModel readSvmModel(String svmModel) throws IOException {
-        BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream
-                (svmModel), StandardCharsets.UTF_8));
+        BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(svmModel), StandardCharsets.UTF_8));
         fp.readLine(); //skip the first line because of header information
 
-        //using unmodified libsvm core method to load a model
-        return new SvmModelImpl("TEST", new NativeSvmModelWrapper(new svm().svm_load_model(fp)));
+        //using unmodified libsvm core method to load a model -> closes reader instance
+        return new SvmModelImpl("TEST", new NativeSvmModelWrapper(svm.svm_load_model(fp)));
     }
 
     public List<SvmDocument> readClassifiedDocuments(String classifiedDocs, boolean predict) throws IOException {
-        BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream
-                (classifiedDocs), StandardCharsets.UTF_8));
-        fp.readLine(); //skip the first line because of header information
-        List<SvmDocument> classifiedDocuments = new ArrayList<>();
+        try(BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(classifiedDocs), StandardCharsets.UTF_8))) {
 
-        String line;
 
-        while ((line = fp.readLine()) != null) {
-            String[] split = line.split(" ");
-            double estimatedClassLabel = Double.parseDouble(split[0]);
+            fp.readLine(); //skip the first line because of header information
+            List<SvmDocument> classifiedDocuments = new ArrayList<>();
 
-            SvmDocument doc = new SvmDocumentMock(new ArrayList<>());
+            String line;
 
-            SvmClassLabel label = new SvmClassLabelImpl(estimatedClassLabel);
-            if (predict) {
-                List<Double> probability = new ArrayList<>();
+            while ((line = fp.readLine()) != null) {
+                String[] split = line.split(" ");
+                double estimatedClassLabel = Double.parseDouble(split[0]);
 
-                for (int i = 1; i < split.length; i++) {
-                    probability.add(Double.parseDouble(split[i]));
+                SvmDocument doc = new SvmDocumentMock(new ArrayList<>());
+
+                SvmClassLabel label = new SvmClassLabelImpl(estimatedClassLabel);
+                if (predict) {
+                    List<Double> probability = new ArrayList<>();
+
+                    for (int i = 1; i < split.length; i++) {
+                        probability.add(Double.parseDouble(split[i]));
+                    }
+                    label.setProbability(Collections.max(probability));
                 }
-                label.setProbability(Collections.max(probability));
+                doc.addClassLabel(label);
+                classifiedDocuments.add(doc);
             }
-            doc.addClassLabel(label);
-            classifiedDocuments.add(doc);
+            return classifiedDocuments;
         }
-        return classifiedDocuments;
     }
 }

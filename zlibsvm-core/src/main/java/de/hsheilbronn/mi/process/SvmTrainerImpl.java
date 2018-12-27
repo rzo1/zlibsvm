@@ -2,7 +2,7 @@
  * ========================LICENSE_START=================================
  * zlibsvm-core
  * %%
- * Copyright (C) 2014 - 2017 Heilbronn University - Medical Informatics
+ * Copyright (C) 2014 - 2019 Heilbronn University - Medical Informatics
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ public class SvmTrainerImpl extends AbstractSvmTrainer {
 
 
     /**
-     * @param configuration must not be <code>null</code>       .
+     * @param configuration must not be {@code null}       .
      * @throws AssertionError if a given parameter is invalid.
      */
     public SvmTrainerImpl(SvmConfiguration configuration, String modelName) {

@@ -2,14 +2,14 @@
  * ========================LICENSE_START=================================
  * zlibsvm-api
  * %%
- * Copyright (C) 2014 - 2017 Heilbronn University - Medical Informatics
+ * Copyright (C) 2014 - 2019 Heilbronn University - Medical Informatics
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,10 +32,10 @@ import java.util.List;
 public interface SvmTrainer {
 
     /**
-     * Trains the underlaying learning machine with the given documents.
+     * Trains the underlying learning machine with the given documents.
      *
-     * @param documents must not be <code>null</code>  or an empty {@link List list}.
-     * @return the trained {@link SvmModel model} or <code>null</code> if cross validation mode is enabled.
+     * @param documents must not be {@code null}  or an empty {@link List list}.
+     * @return the trained {@link SvmModel model} or {@code null} if cross validation mode is enabled.
      * @throws AssertionError Thrown if a given parameter is invalid.
      */
 
@@ -43,9 +43,7 @@ public interface SvmTrainer {
 
 
     /**
-     * @return the accuracy of a cross validation performed while training in the intervall <code>[0,
-     *         100]</code> or <code>-1</code>, if cross validation mode is not enabled or this method was called before
-     *         {@link SvmTrainer#train(List)} .
+     * @return the accuracy of a cross validation performed while training in the interval 0 to 100 or -1, if cross validation mode is not enabled or this method was called before {@link SvmTrainer#train(List)}.
      */
     double getCrossValidationAccuracy();
 }
