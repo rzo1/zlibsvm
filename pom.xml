@@ -201,10 +201,10 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <!--<javadocExecutable>${java.home}/../bin/javadoc</javadocExecutable>-->
-                        <!--<links>-->
-                            <!--<link>http://docs.oracle.com/javase/8/docs/api/</link>-->
-                        <!--</links>-->
+                        <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+                        <links>
+                            <link>http://docs.oracle.com/javase/10/docs/api/</link>
+                        </links>
                         <encoding>utf-8</encoding>
                         <show>public</show>
                         <!-- Speeds up the build of the javadocs -->
