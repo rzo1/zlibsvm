@@ -1,4 +1,4 @@
-#zlibsvm 
+# zlibsvm 
 
 [![Build Status](https://travis-ci.org/rzo1/zlibsvm.svg?branch=master)](https://travis-ci.org/rzo1/zlibsvm)   ![Maven Central](https://img.shields.io/maven-central/v/de.hs-heilbronn.mi/zlibsvm.svg?style=flat-square)
 
