@@ -34,7 +34,6 @@ import java.util.*;
 //is their a better solution?
 public class PrimitiveHelper {
 
-
     public static svm_node[][] svmFeatureMapTo2dArray(Map<Integer, List<SvmFeature>> svmFeatureMap) {
         Set<Integer> set = svmFeatureMap.keySet();
         svm_node[][] feature2dArray = new svm_node[set.size()][];

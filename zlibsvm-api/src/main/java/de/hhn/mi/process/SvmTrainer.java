@@ -41,7 +41,6 @@ public interface SvmTrainer {
 
     SvmModel train(List<SvmDocument> documents);
 
-
     /**
      * @return the accuracy of a cross validation performed while training in the interval 0 to 100 or -1, if cross validation mode is not enabled or this method was called before {@link SvmTrainer#train(List)}.
      */

@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,7 +23,6 @@ import de.hhn.mi.configuration.SvmConfiguration;
 import de.hhn.mi.domain.SvmDocument;
 import de.hhn.mi.domain.SvmModel;
 import de.hhn.mi.exception.ClassificationCoreException;
-import libsvm.svm;
 import libsvm.svm_parameter;
 import libsvm.svm_problem;
 
@@ -31,16 +30,15 @@ import java.util.List;
 
 public abstract class AbstractSvmTrainer extends AbstractSvmTool implements SvmTrainer {
 
-    private final svm engine = new svm();
     private svm_parameter param;
     private svm_problem problem;
     private SvmConfiguration configuration;
     private String modelName;
-    private double crossValidationAccurancy = -1.0d;
+    private double crossValidationAccuracy = -1.0d;
 
     /**
-     * @param svmConfiguration must not be {@code null}       .
-     * @param modelName
+     * @param svmConfiguration must not be {@code null}.
+     * @param modelName        must not be {@code null}.
      * @throws AssertionError if a given parameter is invalid.
      */
     AbstractSvmTrainer(SvmConfiguration svmConfiguration, String modelName) {
@@ -63,7 +61,7 @@ public abstract class AbstractSvmTrainer extends AbstractSvmTool implements SvmT
         problem = loadTrainingProblem(documents);
         validateConfiguration();
         if (configuration.getCrossValidation() != 0) {
-            crossValidationAccurancy = doCrossValidation(configuration);
+            crossValidationAccuracy = doCrossValidation(configuration);
         } else {
             return getTrainedModel();
         }
@@ -96,11 +94,7 @@ public abstract class AbstractSvmTrainer extends AbstractSvmTool implements SvmT
      * {@inheritDoc}
      */
     public double getCrossValidationAccuracy() {
-        return crossValidationAccurancy;
-    }
-
-    svm getSvmEngine() {
-        return engine;
+        return crossValidationAccuracy;
     }
 
     String getModelName() {

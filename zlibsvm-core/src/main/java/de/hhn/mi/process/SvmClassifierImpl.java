@@ -25,6 +25,7 @@ import de.hhn.mi.domain.SvmClassLabelImpl;
 import de.hhn.mi.domain.SvmDocument;
 import de.hhn.mi.domain.SvmModel;
 import de.hhn.mi.exception.ClassificationCoreException;
+import libsvm.svm;
 import libsvm.svm_node;
 import org.slf4j.Logger;
 
@@ -53,12 +54,12 @@ public class SvmClassifierImpl extends AbstractSvmClassifier {
         assert (!documents.isEmpty());
 
         if (probabilityEstimates) {
-            if (getSvmEngine().svm_check_probability_model(getSvmModel()) == 0) {
+            if (svm.svm_check_probability_model(getSvmModel()) == 0) {
                 String msg = "Model does not support probability estimates";
                 throw new ClassificationCoreException(msg);
             }
         } else {
-            if (getSvmEngine().svm_check_probability_model(getSvmModel()) != 0) {
+            if (svm.svm_check_probability_model(getSvmModel()) != 0) {
                 logger.info("Model supports probability estimates, but disabled in prediction.");
             }
         }
@@ -69,8 +70,8 @@ public class SvmClassifierImpl extends AbstractSvmClassifier {
         double sumOfEstimatedClassLabels = 0, sumOfTargetClassLabels = 0, sumOfEstimatedClassLabelsSquared = 0,
                 sumOfTargetClassLabelsSquared = 0, sumMultipliedEstimatedTargetClassLabels = 0;
 
-        SvmType svmType = SvmType.getByValue(getSvmEngine().svm_get_svm_type(getSvmModel()));
-        int numberOfClasses = getSvmEngine().svm_get_nr_class(getSvmModel());
+        SvmType svmType = SvmType.getByValue(svm.svm_get_svm_type(getSvmModel()));
+        int numberOfClasses = svm.svm_get_nr_class(getSvmModel());
         double[] estimatedProbabilities = new double[numberOfClasses];
         int[] labels = new int[numberOfClasses];
 
@@ -80,14 +81,14 @@ public class SvmClassifierImpl extends AbstractSvmClassifier {
                 logger
                         .info("Prob. model for test data: target value = predicted value + z,  " +
                                 "z: Laplace distribution e^(-|z|/sigma)/(2sigma),sigma="
-                                + getSvmEngine().svm_get_svr_probability(getSvmModel()));
+                                + svm.svm_get_svr_probability(getSvmModel()));
             } else {
-                getSvmEngine().svm_get_labels(getSvmModel(), labels);
+                svm.svm_get_labels(getSvmModel(), labels);
             }
         }
         boolean validate = false;
         for (SvmDocument svmDocument : documents) {
-            validate = ((svmDocument.getClassLabelWithHighestProbability() == null) ? false : true);
+            validate = (svmDocument.getClassLabelWithHighestProbability() != null);
 
             svm_node[] x = super.readProblem(svmDocument);
 
@@ -96,7 +97,7 @@ public class SvmClassifierImpl extends AbstractSvmClassifier {
 
             if (probabilityEstimates
                     && (svmType == SvmType.C_SVC || svmType == SvmType.NU_SVC)) {
-                estimatedClassLabel = getSvmEngine().svm_predict_probability(getSvmModel(), x, estimatedProbabilities);
+                estimatedClassLabel = svm.svm_predict_probability(getSvmModel(), x, estimatedProbabilities);
 
                 for (int i = 0; i < numberOfClasses; i++) {
                     SvmClassLabel scl = new SvmClassLabelImpl(labels[i]);
@@ -104,7 +105,7 @@ public class SvmClassifierImpl extends AbstractSvmClassifier {
                     classLabels.add(scl);
                 }
             } else {
-                estimatedClassLabel = getSvmEngine().svm_predict(getSvmModel(), x);
+                estimatedClassLabel = svm.svm_predict(getSvmModel(), x);
                 classLabels.add(new SvmClassLabelImpl(estimatedClassLabel));
             }
 

@@ -23,7 +23,6 @@ import de.hhn.mi.domain.SvmDocument;
 import de.hhn.mi.domain.SvmMetaInformation;
 import de.hhn.mi.domain.SvmModel;
 import de.hhn.mi.util.PrimitiveHelper;
-import libsvm.svm;
 import libsvm.svm_model;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -35,7 +34,6 @@ import java.util.List;
 abstract class AbstractSvmClassifier extends AbstractSvmTool implements SvmClassifier {
 
     private svm_model svmModel = null;
-    private final svm engine = new svm();
 
     AbstractSvmClassifier(SvmModel svmModel) {
         assert (svmModel != null);
@@ -52,16 +50,15 @@ abstract class AbstractSvmClassifier extends AbstractSvmTool implements SvmClass
         model.nr_class = (metaInformation.getNumberOfClasses());
 
         List<Double> rhoConstants = metaInformation.getRhoConstants();
-        model.rho = (ArrayUtils.toPrimitive(rhoConstants.toArray(new Double[rhoConstants.size()])));
+        model.rho = (ArrayUtils.toPrimitive(rhoConstants.toArray(new Double[0])));
         List<Double> probabilityA = metaInformation.getProbabilityA();
-        model.probA =(ArrayUtils.toPrimitive(probabilityA.toArray(new Double[probabilityA.size()])));
+        model.probA =(ArrayUtils.toPrimitive(probabilityA.toArray(new Double[0])));
         List<Double> probabilityB = metaInformation.getProbabilityB();
-        model.probB =(ArrayUtils.toPrimitive(probabilityB.toArray(new Double[probabilityB.size()])));
+        model.probB =(ArrayUtils.toPrimitive(probabilityB.toArray(new Double[0])));
         List<Integer> labelForEachClass = metaInformation.getLabelForEachClass();
-        model.label =((ArrayUtils.toPrimitive(labelForEachClass.toArray(new Integer[labelForEachClass.size()]))));
+        model.label =((ArrayUtils.toPrimitive(labelForEachClass.toArray(new Integer[0]))));
         List<Integer> numberOfSupportVectorsForEachClass = metaInformation.getNumberOfSupportVectorsForEachClass();
-        model.nSV= (ArrayUtils.toPrimitive(numberOfSupportVectorsForEachClass.toArray(new
-                Integer[numberOfSupportVectorsForEachClass.size()])));
+        model.nSV= (ArrayUtils.toPrimitive(numberOfSupportVectorsForEachClass.toArray(new Integer[0])));
 
         model.sv_coef =(PrimitiveHelper.doubleMapTo2dArray(svmModel.getSvCoefficients()));
         model.SV =  PrimitiveHelper.svmFeatureMapTo2dArray(svmModel.getSupportVectors());
@@ -78,10 +75,6 @@ abstract class AbstractSvmClassifier extends AbstractSvmTool implements SvmClass
 
    svm_model getSvmModel() {
         return svmModel;
-    }
-
-    svm getSvmEngine() {
-        return engine;
     }
 
 }

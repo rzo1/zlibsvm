@@ -61,17 +61,11 @@ public class NativeSvmModelWrapper {
         nativeSvmModel.l = (amountOfSupportVectors);
         nativeSvmModel.nr_class = (numberOfClasses);
 
-        nativeSvmModel.rho = (ArrayUtils.toPrimitive(rhoConstants.toArray(new
-                Double[rhoConstants
-                .size()])));
-        nativeSvmModel.probA = (ArrayUtils.toPrimitive(probabilityA.toArray(new
-                Double[probabilityA.size()])));
-        nativeSvmModel.probB = (ArrayUtils.toPrimitive(probabilityB.toArray(new
-                Double[probabilityB.size()])));
-        nativeSvmModel.label = ((ArrayUtils.toPrimitive(labelForEachClass.toArray(new
-                Integer[labelForEachClass.size()]))));
-        nativeSvmModel.nSV = (ArrayUtils.toPrimitive(numberOfSVforEachClass.toArray(new
-                Integer[numberOfSVforEachClass.size()])));
+        nativeSvmModel.rho = (ArrayUtils.toPrimitive(rhoConstants.toArray(new Double[0])));
+        nativeSvmModel.probA = (ArrayUtils.toPrimitive(probabilityA.toArray(new Double[0])));
+        nativeSvmModel.probB = (ArrayUtils.toPrimitive(probabilityB.toArray(new Double[0])));
+        nativeSvmModel.label = ((ArrayUtils.toPrimitive(labelForEachClass.toArray(new Integer[0]))));
+        nativeSvmModel.nSV = (ArrayUtils.toPrimitive(numberOfSVforEachClass.toArray(new Integer[0])));
 
         if (svCoefficients != null) {
             nativeSvmModel.sv_coef = (PrimitiveHelper.doubleMapTo2dArray(svCoefficients));
@@ -81,9 +75,7 @@ public class NativeSvmModelWrapper {
             nativeSvmModel.SV = (PrimitiveHelper.svmFeatureMapTo2dArray(supportVectors));
         }
 
-        nativeSvmModel.param = AbstractSvmTool.unwrap((svmConfigurationBuilder.setProbability(probabilityEstimates ==
-                1 ?
-                true : false).build()));
+        nativeSvmModel.param = AbstractSvmTool.unwrap((svmConfigurationBuilder.setProbability(probabilityEstimates == 1).build()));
 
         this.svmModel = nativeSvmModel;
     }

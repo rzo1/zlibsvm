@@ -27,6 +27,7 @@ import de.hhn.mi.domain.SvmDocument;
 import de.hhn.mi.domain.SvmModel;
 import de.hhn.mi.domain.SvmModelImpl;
 import de.hhn.mi.exception.ClassificationCoreException;
+import libsvm.svm;
 import libsvm.svm_node;
 import libsvm.svm_problem;
 import org.slf4j.Logger;
@@ -110,7 +111,7 @@ public class SvmTrainerImpl extends AbstractSvmTrainer {
         double sumv = 0, sumy = 0, sumvv = 0, sumyy = 0, sumvy = 0;
         double[] target = new double[getProblem().l];
 
-        getSvmEngine().svm_cross_validation(getProblem(), getParam(), configuration.getNFold(), target);
+        svm.svm_cross_validation(getProblem(), getParam(), configuration.getNFold(), target);
         if (getParam().svm_type == SvmType.EPSILON_SVR.getNumericType()
                 || getParam().svm_type == SvmType.NU_SVR.getNumericType()) {
             for (i = 0; i < getProblem().l; i++) {
@@ -152,7 +153,7 @@ public class SvmTrainerImpl extends AbstractSvmTrainer {
     @Override
     protected void validateConfiguration() {
         //not nice, but library issue
-        String errorMsg = getSvmEngine().svm_check_parameter(getProblem(), getParam());
+        String errorMsg = svm.svm_check_parameter(getProblem(), getParam());
         if (errorMsg != null) {
             throw new ClassificationCoreException("Error: " + errorMsg);
         }
@@ -163,7 +164,7 @@ public class SvmTrainerImpl extends AbstractSvmTrainer {
      */
     @Override
     protected SvmModel getTrainedModel() {
-        return new SvmModelImpl(getModelName(), new NativeSvmModelWrapper(getSvmEngine().svm_train(getProblem(),
+        return new SvmModelImpl(getModelName(), new NativeSvmModelWrapper(svm.svm_train(getProblem(),
                 getParam())));
     }
 

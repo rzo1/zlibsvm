@@ -25,7 +25,6 @@ import de.hhn.mi.domain.SvmFeature;
 import libsvm.svm;
 import libsvm.svm_node;
 import libsvm.svm_parameter;
-import libsvm.svm_print_interface;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
@@ -56,17 +55,14 @@ public abstract class AbstractSvmTool {
 
         List<Integer> weightLabel = configuration.getWeightLabel();
 
-        param.weight_label = ArrayUtils.toPrimitive(weightLabel.toArray(new Integer[weightLabel.size()]));
+        param.weight_label = ArrayUtils.toPrimitive(weightLabel.toArray(new Integer[0]));
         List<Double> weight = configuration.getWeight();
 
-        param.weight = ArrayUtils.toPrimitive(weight.toArray(new Double[weight.size()]));
+        param.weight = ArrayUtils.toPrimitive(weight.toArray(new Double[0]));
 
         if(configuration.isQuietMode()) {
-            svm.svm_set_print_string_function(new svm_print_interface() {
-                @Override
-                public void print(String s) {
-                    //nothing to do here...
-                }
+            svm.svm_set_print_string_function(s -> {
+                //nothing to do here...
             });
         }
         return param;
