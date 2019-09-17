@@ -7,7 +7,7 @@
     <groupId>de.hs-heilbronn.mi</groupId>
     <artifactId>zlibsvm</artifactId>
     <packaging>pom</packaging>
-    <version>2.0</version>
+    <version>2.0.1-SNAPSHOT</version>
 
     <name>zlibsvm</name>
     <description>A Java binding for the famous LIBSVM library</description>
@@ -70,13 +70,13 @@
         <!-- Maven specific settings -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
-        <java.source>10</java.source>
-        <java.target>10</java.target>
+        <java.source>11</java.source>
+        <java.target>11</java.target>
         <maven.compile.encoding>UTF-8</maven.compile.encoding>
         <maven.compiler.target>${java.target}</maven.compiler.target>
 
-        <zlibsvm.version>2.0</zlibsvm.version>
-        <libsvm.version>3.23</libsvm.version>
+        <zlibsvm.version>2.0.1-SNAPSHOT</zlibsvm.version>
+        <libsvm.version>3.24</libsvm.version>
         <!-- apache commons stuff -->
         <commons.lang3.version>3.8.1</commons.lang3.version>
 
@@ -202,11 +202,17 @@
                     </executions>
                     <configuration>
                         <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
-                        <links>
-                            <link>http://docs.oracle.com/javase/10/docs/api/</link>
-                        </links>
+                        <!-- workaround for https://bugs.openjdk.java.net/browse/JDK-8212233 -->
+                        <javaApiLinks>
+                            <property>
+                                <name>foo</name>
+                                <value>bar</value>
+                            </property>
+                        </javaApiLinks>
                         <encoding>utf-8</encoding>
                         <show>public</show>
+                        <detectOfflineLinks>false</detectOfflineLinks>
+                        <detectJavaApiLink>false</detectJavaApiLink>
                         <!-- Speeds up the build of the javadocs -->
                         <quiet>true</quiet>
                         <use>false</use>
