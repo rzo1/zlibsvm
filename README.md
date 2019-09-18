@@ -15,7 +15,7 @@ To use the latest release of **zlibsvm**, please use the following snippet in yo
     <dependency>
         <groupId>de.hs-heilbronn.mi</groupId>
         <artifactId>zlibsvm-core</artifactId>
-        <version>2.0</version>
+        <version>2.0.1</version>
     </dependency>
 ```
 
@@ -24,7 +24,7 @@ To use the latest release of **zlibsvm**, please use the following snippet in yo
     <dependency>
         <groupId>de.hs-heilbronn.mi</groupId>
         <artifactId>zlibsvm-core</artifactId>
-        <version>1.3</version>
+        <version>1.3.1</version>
     </dependency>
 ```
 
