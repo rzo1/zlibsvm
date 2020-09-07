@@ -63,7 +63,7 @@
 
     <properties>
         <!-- Application settings -->
-        <copyright.year>2019</copyright.year>
+        <copyright.year>2020</copyright.year>
         <license.inceptionYear>2014</license.inceptionYear>
         <license.licenseName>apache_v2</license.licenseName>
 
@@ -78,20 +78,20 @@
         <zlibsvm.version>2.0.1</zlibsvm.version>
         <libsvm.version>3.24</libsvm.version>
         <!-- apache commons stuff -->
-        <commons.lang3.version>3.8.1</commons.lang3.version>
+        <commons.lang3.version>3.11</commons.lang3.version>
 
         <!-- additional dependencies -->
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13</junit.version>
 
         <slf4j.version>1.7.25</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
 
-        <maven.license.plugin>1.16</maven.license.plugin>
-        <maven.compiler.plugin>3.8.0</maven.compiler.plugin>
-        <maven.source.plugin>3.0.1</maven.source.plugin>
-        <maven.javadoc.plugin>3.0.1</maven.javadoc.plugin>
-        <forbiddenapis.plugin>2.6</forbiddenapis.plugin>
-        <maven.surefire.plugin>2.22.1</maven.surefire.plugin>
+        <maven.license.plugin>2.0.0</maven.license.plugin>
+        <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
+        <maven.source.plugin>3.2.0</maven.source.plugin>
+        <maven.javadoc.plugin>3.2.0</maven.javadoc.plugin>
+        <forbiddenapis.plugin>3.0.1</forbiddenapis.plugin>
+        <maven.surefire.plugin>3.0.0-M5</maven.surefire.plugin>
         <maven.gpg.plugin>1.6</maven.gpg.plugin>
     </properties>
 
@@ -224,7 +224,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven.surefire.plugin}</version>
                     <configuration>
-                        <argLine>-Xmx512m -XX:+CMSClassUnloadingEnabled -Dfile.encoding=UTF-8</argLine>
+                        <argLine>-Xmx512m -Dfile.encoding=UTF-8</argLine>
                     </configuration>
                 </plugin>
                 <plugin>
