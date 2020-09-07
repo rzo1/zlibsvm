@@ -66,7 +66,7 @@ First of all, you need to implement your custom `SvmDocument` and a custom `SvmF
       public class SvmDocumentImpl implements SvmDocument {
       
           private final List<SvmFeature> features;
-          private List<SvmClassLabel> classLabels = new ArrayList<>();
+          private final List<SvmClassLabel> classLabels = new ArrayList<>();
       
           public SvmDocumentImpl(List<SvmFeature> features) {
               this.features = features;

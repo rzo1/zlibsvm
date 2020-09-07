@@ -61,7 +61,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Determines the degree in the kernel function. <b>default: 3</b>
      *
-     * @param degree must be <code> >= 0</code>
+     * @param degree must be {@code >= 0}
      * @return this {@link SvmConfigurationBuilder builder}
      * @throws AssertionError if the given parameter is invalid.
      */
@@ -70,7 +70,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Determines the gamma in the kernel function. <b>default: 1/(amount_of_features)</b>
      *
-     * @param gamma must be <code> >= 0</code>
+     * @param gamma must be {@code >= 0}
      * @return this {@link SvmConfigurationBuilder builder}
      * @throws AssertionError if the given parameter is invalid.
      */
@@ -87,7 +87,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Determines the parameter nu of nu-SVC, one-class SVM and nu-SVR <b>default: 0.5</b>
      *
-     * @param nu must be <code> >0  and <= 1 </code>
+     * @param nu must be {@code >0  and <= 1 }
      * @return this {@link SvmConfigurationBuilder builder}
      * @throws AssertionError if the given parameter is invalid.
      */
@@ -96,7 +96,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Cache memory size in MB. <b>default: 100</b>
      *
-     * @param cacheSize must be <code> > 0</code>
+     * @param cacheSize must be {@code > 0}
      * @return this {@link SvmConfigurationBuilder builder}
      * @throws AssertionError if the given parameter is invalid.
      */
@@ -125,7 +125,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Determines the epsilon in the loss (or cost) function of epsilon-SVR <b>default: 0.1</b>
      *
-     * @param p must be <code> p >= 0</code>      .
+     * @param p must be {@code p >= 0}.
      * @return this {@link SvmConfigurationBuilder builder}
      * @throws AssertionError if the given parameter is invalid.
      */
@@ -134,7 +134,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Determines whether to use shrinking heuristics. <b>default: true</b>
      *
-     * @param shrinking {@code true} if to use shrinking heuristics, else <code>false</code>
+     * @param shrinking {@code true} if to use shrinking heuristics, else {@code false}
      * @return this {@link SvmConfigurationBuilder builder}
      */
     SvmConfigurationBuilder setShrinking(boolean shrinking);
@@ -142,7 +142,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Determines whether to train a SVC or SVR model for probability estimates.  <b>default: false</b>
      *
-     * @param probability {@code true} if to train for probability estimates, else <code>false</code>
+     * @param probability {@code true} if to train for probability estimates, else {@code false}
      * @return this {@link SvmConfigurationBuilder builder}
      */
     SvmConfigurationBuilder setProbability(boolean probability);
@@ -160,7 +160,7 @@ public interface SvmConfigurationBuilder extends Serializable {
      * Determines whether to use n-fold cross validation mode. <b>default: false</b>
      *
      * @param crossValidation {@code true} if to use n-fold cross validation mode, else {@code false}
-     * @param nFold           must be <code>>= 2</code>
+     * @param nFold           must be {@code >= 2}
      * @return this {@link SvmConfigurationBuilder builder}
      * @throws AssertionError if the given parameter is invalid.
      */
@@ -168,7 +168,7 @@ public interface SvmConfigurationBuilder extends Serializable {
 
     /**
      * quiet mode (no outputs)
-     * @param quiteMode {@code true} if it should reduce output, else <code>false</code>
+     * @param quiteMode {@code true} if it should reduce output, else {@code false}
      * @return this {@link SvmConfigurationBuilder builder}
      */
     SvmConfigurationBuilder setQuietMode(boolean quiteMode);

@@ -40,7 +40,7 @@ public interface SvmClassifier {
      *                             that this is only supported by SVC or SVR SVMs(see {@link SvmType})
      * @return classified documents
      * @throws AssertionError Thrown if a given parameter is invalid.
-     * @throws ClassificationCoreException Thrown if the underlaying model does not support probability estimates.
+     * @throws ClassificationCoreException Thrown if the underlying model does not support probability estimates.
      */
     List<SvmDocument> classify(List<SvmDocument> documents, boolean probabilityEstimates);
 

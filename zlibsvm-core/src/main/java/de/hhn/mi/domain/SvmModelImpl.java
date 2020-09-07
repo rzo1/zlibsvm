@@ -35,8 +35,8 @@ import java.util.Map;
  */
 public class SvmModelImpl implements SvmModel {
 
-    private SvmMetaInformation svmMetaInformation;
-    private svm_model svmModel;
+    private final SvmMetaInformation svmMetaInformation;
+    private final svm_model svmModel;
 
     /**
      * @param svmModel must not be {@code null}
@@ -49,8 +49,7 @@ public class SvmModelImpl implements SvmModel {
         svmMetaInformation = new SvmMetaInformationImpl(svmModel, new SvmConfigurationImpl.Builder().setSvmType
                 (SvmType.getByValue(svmParameter.svm_type)).setKernelType(KernelType.getByValue(svmParameter
                 .kernel_type)).setDegree(svmParameter.degree).setGamma(svmParameter.gamma).setCoef0(svmParameter
-                .coef0).setProbability(svmParameter.probability == 1 ?
-                true : false).build(), modelName);
+                .coef0).setProbability(svmParameter.probability == 1).build(), modelName);
 
     }
 

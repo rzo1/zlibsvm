@@ -24,8 +24,8 @@ package de.hhn.mi.domain;
  */
 public class SvmClassLabelImpl implements SvmClassLabel {
 
-    private double numeric;
-    private String name;
+    private final double numeric;
+    private final String name;
     private Double probability = 1.0d;
 
     /**
@@ -34,7 +34,7 @@ public class SvmClassLabelImpl implements SvmClassLabel {
      * @param numeric No restrictions on this parameter
      */
     public SvmClassLabelImpl(double numeric) {
-        this.numeric = numeric;
+       this(numeric, "");
     }
 
     /**

@@ -32,8 +32,8 @@ public abstract class AbstractSvmTrainer extends AbstractSvmTool implements SvmT
 
     private svm_parameter param;
     private svm_problem problem;
-    private SvmConfiguration configuration;
-    private String modelName;
+    private final SvmConfiguration configuration;
+    private final String modelName;
     private double crossValidationAccuracy = -1.0d;
 
     /**

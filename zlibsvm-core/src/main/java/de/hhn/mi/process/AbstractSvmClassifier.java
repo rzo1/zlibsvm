@@ -33,7 +33,7 @@ import java.util.List;
  */
 abstract class AbstractSvmClassifier extends AbstractSvmTool implements SvmClassifier {
 
-    private svm_model svmModel = null;
+    private svm_model svmModel;
 
     AbstractSvmClassifier(SvmModel svmModel) {
         assert (svmModel != null);

@@ -30,7 +30,7 @@ import java.util.List;
 public class SvmDocumentMock implements SvmDocument {
 
     private final List<SvmFeature> features;
-    private List<SvmClassLabel> classLabels = new ArrayList<>();
+    private final List<SvmClassLabel> classLabels = new ArrayList<>();
 
     public SvmDocumentMock(List<SvmFeature> features) {
         this.features = features;

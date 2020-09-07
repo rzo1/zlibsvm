@@ -26,12 +26,13 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author rz
  */
 public class SvmMetaInformationImpl implements SvmMetaInformation {
-    private svm_model svmModel;
+    private final svm_model svmModel;
     private SvmConfiguration svmConfiguration;
     private final String modelName;
 
@@ -110,44 +111,39 @@ public class SvmMetaInformationImpl implements SvmMetaInformation {
 
     @Override
     public void setRhoConstants(List<Double> rhoConstants) {
-        svmModel.rho = (ArrayUtils.toPrimitive(rhoConstants.toArray(new Double[rhoConstants.size()])));
+        svmModel.rho = (ArrayUtils.toPrimitive(rhoConstants.toArray(new Double[0])));
     }
 
     @Override
     public void setLabelForEachClass(List<Integer> labelForEachClass) {
-        svmModel.label = (ArrayUtils.toPrimitive(labelForEachClass.toArray(new Integer[labelForEachClass.size()])));
+        svmModel.label = (ArrayUtils.toPrimitive(labelForEachClass.toArray(new Integer[0])));
     }
 
     @Override
     public void setProbabilityA(List<Double> probabilityA) {
-        svmModel.probA = (ArrayUtils.toPrimitive(probabilityA.toArray(new Double[probabilityA.size()])));
+        svmModel.probA = (ArrayUtils.toPrimitive(probabilityA.toArray(new Double[0])));
     }
 
     @Override
     public void setProbabilityB(List<Double> probabilityB) {
-        svmModel.probB = (ArrayUtils.toPrimitive(probabilityB.toArray(new Double[probabilityB.size()])));
+        svmModel.probB = (ArrayUtils.toPrimitive(probabilityB.toArray(new Double[0])));
     }
 
     @Override
     public void setNumberOfSupportVectorsForEachClass(List<Integer> numberOfSupportVectorsForEachClass) {
-        svmModel.nSV = (ArrayUtils.toPrimitive(numberOfSupportVectorsForEachClass.toArray(new
-                Integer[numberOfSupportVectorsForEachClass.size()])));
+        svmModel.nSV = (ArrayUtils.toPrimitive(numberOfSupportVectorsForEachClass.toArray(new Integer[0])));
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         SvmMetaInformationImpl that = (SvmMetaInformationImpl) o;
-
-        if (modelName != null ? !modelName.equals(that.modelName) : that.modelName != null) return false;
-
-        return true;
+        return Objects.equals(modelName, that.modelName);
     }
 
     @Override
     public int hashCode() {
-        return modelName != null ? modelName.hashCode() : 0;
+        return Objects.hash(modelName);
     }
 }

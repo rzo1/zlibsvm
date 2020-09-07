@@ -46,7 +46,7 @@ public class SvmConfigurationImpl implements SvmConfiguration {
     private final int[] weightLabel;
     private final double[] weight;
     private final int nFold;
-    private boolean quietMode;
+    private final boolean quietMode;
 
     private SvmConfigurationImpl(Builder builder) {
         this.svmType = builder.svmType;

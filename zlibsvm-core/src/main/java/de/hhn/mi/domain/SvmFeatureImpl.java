@@ -54,10 +54,6 @@ public class SvmFeatureImpl implements SvmFeature {
      */
     @Override
     public int compareTo(SvmFeature o) {
-        if (getIndex() < o.getIndex())
-            return -1;
-        if (getIndex() > o.getIndex())
-            return 1;
-        return 0;
+        return Integer.compare(getIndex(), o.getIndex());
     }
 }
