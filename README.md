@@ -1,6 +1,6 @@
 # zlibsvm 
 
-[![Build Status](https://travis-ci.org/rzo1/zlibsvm.svg?branch=master)](https://travis-ci.org/rzo1/zlibsvm)   ![Maven Central](https://img.shields.io/maven-central/v/de.hs-heilbronn.mi/zlibsvm.svg?style=flat-square)
+![Build Status](https://github.com/rzo1/zlibsvm/actions/workflows/main.yml/badge.svg)  ![Maven Central](https://img.shields.io/maven-central/v/de.hs-heilbronn.mi/zlibsvm.svg?style=flat-square)
 
 **zlibsvm** is an object-oriented, easy to use and simple Java binding for the famous **LIBSVM** library hosted on [GitHub](https://github.com/cjlin1/libsvm).
 
