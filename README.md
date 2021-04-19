@@ -10,7 +10,7 @@ It encapsulates the cross-compiled Java code from **LIBSVM** behind an object-or
 
 To use the latest release of **zlibsvm**, please use the following snippet in your `pom.xml`
 
-#### Java 10+
+#### Java 11+
 ```xml
     <dependency>
         <groupId>de.hs-heilbronn.mi</groupId>
