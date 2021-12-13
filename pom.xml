@@ -21,13 +21,13 @@
     <scm>
         <connection>scm:git:git://github.com/rzo1/zlibsvm.git</connection>
         <developerConnection>scm:git:git@github.com:rzo1/zlibsvm.git</developerConnection>
-        <url>http://github.com/rzo1/zlibsvm</url>
+        <url>https://github.com/rzo1/zlibsvm</url>
     </scm>
 
     <licenses>
         <license>
             <name>Apache 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
             <comments>A business-friendly OSS license</comments>
         </license>
@@ -35,7 +35,7 @@
 
     <organization>
         <name>Heilbronn University - Medical Informatics</name>
-        <url>http://www.mi.hs-heilbronn.de</url>
+        <url>https://www.mi.hs-heilbronn.de</url>
     </organization>
 
     <developers>
@@ -47,14 +47,14 @@
             </roles>
             <email>richard.zowalla@hs-heilbronn.de</email>
             <organization>University of Heilbronn - Medical Informatics</organization>
-            <organizationUrl>http://www.mi.hs-heilbronn.de</organizationUrl>
+            <organizationUrl>https://www.mi.hs-heilbronn.de</organizationUrl>
         </developer>
         <developer>
             <id>mawiesne</id>
             <name>Martin Wiesner</name>
             <email>martin.wiesner@hs-heilbronn.de</email>
             <organization>University of Heilbronn - Medical Informatics</organization>
-            <organizationUrl>http://www.mi.hs-heilbronn.de</organizationUrl>
+            <organizationUrl>https://www.mi.hs-heilbronn.de</organizationUrl>
             <roles>
                 <role>developer</role>
             </roles>
@@ -119,12 +119,12 @@
         <snapshotRepository>
             <id>ossrh</id>
             <name>Sonatype Nexus snapshot repository</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <url>httpss://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
             <id>ossrh</id>
             <name>Sonatype Nexus release repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>httpss://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 
@@ -200,7 +200,7 @@
                     </executions>
                     <configuration>
                         <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
-                        <!-- workaround for https://bugs.openjdk.java.net/browse/JDK-8212233 -->
+                        <!-- workaround for httpss://bugs.openjdk.java.net/browse/JDK-8212233 -->
                         <javaApiLinks>
                             <property>
                                 <name>foo</name>
