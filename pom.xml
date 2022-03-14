@@ -90,7 +90,7 @@
         <log4j.version>2.17.2</log4j.version>
 
         <maven.license.plugin>2.0.0</maven.license.plugin>
-        <maven.compiler.plugin>3.10.0</maven.compiler.plugin>
+        <maven.compiler.plugin>3.10.1</maven.compiler.plugin>
         <maven.source.plugin>3.2.1</maven.source.plugin>
         <maven.javadoc.plugin>3.3.2</maven.javadoc.plugin>
         <forbiddenapis.plugin>3.2</forbiddenapis.plugin>
