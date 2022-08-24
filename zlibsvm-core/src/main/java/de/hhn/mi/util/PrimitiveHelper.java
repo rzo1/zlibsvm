@@ -27,11 +27,7 @@ import java.util.*;
 
 /**
  * A little helper to convert 2d arrays of double and {@link SvmFeature svm features} to maps and the other way around.
- *
- * @author rz
  */
-
-//is their a better solution?
 public class PrimitiveHelper {
 
     public static svm_node[][] svmFeatureMapTo2dArray(Map<Integer, List<SvmFeature>> svmFeatureMap) {

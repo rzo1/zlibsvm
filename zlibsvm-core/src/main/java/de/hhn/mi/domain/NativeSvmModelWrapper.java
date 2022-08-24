@@ -33,7 +33,7 @@ import java.util.Map;
  */
 public class NativeSvmModelWrapper {
 
-    protected svm_model svmModel;
+    protected final svm_model svmModel;
 
     public NativeSvmModelWrapper(svm_model svmModel) {
         this.svmModel = svmModel;
@@ -56,7 +56,7 @@ public class NativeSvmModelWrapper {
                                  Map<Integer, List<Double>> svCoefficients, Map<Integer, List<SvmFeature>>
                                          supportVectors) {
 
-        svm_model nativeSvmModel = new svm_model();
+        final svm_model nativeSvmModel = new svm_model();
 
         nativeSvmModel.l = (amountOfSupportVectors);
         nativeSvmModel.nr_class = (numberOfClasses);
