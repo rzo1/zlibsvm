@@ -68,7 +68,7 @@
         <license.licenseName>apache_v2</license.licenseName>
 
         <!-- Maven specific settings -->
-        <minimum.maven.version>3.6.0</minimum.maven.version>
+        <minimum.maven.version>3.8.0</minimum.maven.version>
         <!-- Maven Range Syntax -->
         <required.maven.version>[${minimum.maven.version},)</required.maven.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
