@@ -19,15 +19,6 @@ To use the latest release of **zlibsvm**, please use the following snippet in yo
     </dependency>
 ```
 
-#### Java 8+
-```xml
-    <dependency>
-        <groupId>de.hs-heilbronn.mi</groupId>
-        <artifactId>zlibsvm-core</artifactId>
-        <version>1.3.1</version>
-    </dependency>
-```
-
 ### Quickstart
 
 #### Check UI-based Example
