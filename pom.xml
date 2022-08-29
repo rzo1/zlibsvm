@@ -79,7 +79,7 @@
         <maven.compiler.target>${java.target}</maven.compiler.target>
 
         <zlibsvm.version>2.0.8</zlibsvm.version>
-        <libsvm.version>3.3</libsvm.version>
+        <libsvm.version>3.25</libsvm.version>
         <!-- apache commons stuff -->
         <commons.lang3.version>3.12.0</commons.lang3.version>
 
