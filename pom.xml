@@ -96,7 +96,7 @@
         <forbiddenapis.plugin>3.4</forbiddenapis.plugin>
         <maven.surefire.plugin>3.0.0-M7</maven.surefire.plugin>
         <maven.gpg.plugin>3.0.1</maven.gpg.plugin>
-        <maven.versions.version>2.12.0</maven.versions.version>
+        <maven.versions.version>2.13.0</maven.versions.version>
     </properties>
 
     <dependencyManagement>
