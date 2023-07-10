@@ -89,7 +89,7 @@
         <slf4j.version>1.7.36</slf4j.version>
         <log4j.version>2.20.0</log4j.version>
 
-        <maven.license.plugin>2.0.1</maven.license.plugin>
+        <maven.license.plugin>2.2.0</maven.license.plugin>
         <maven.compiler.plugin>3.11.0</maven.compiler.plugin>
         <maven.source.plugin>3.3.0</maven.source.plugin>
         <maven.javadoc.plugin>3.5.0</maven.javadoc.plugin>
