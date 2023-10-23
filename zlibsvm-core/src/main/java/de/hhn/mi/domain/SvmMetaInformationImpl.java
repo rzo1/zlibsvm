@@ -37,7 +37,7 @@ public class SvmMetaInformationImpl implements SvmMetaInformation {
     private final String modelName;
 
     public SvmMetaInformationImpl(NativeSvmModelWrapper svmModel, SvmConfiguration svmConfiguration, String modelName) {
-        this.svmModel = svmModel.svmModel;
+        this.svmModel = svmModel.getSvmModel();
         this.svmConfiguration = svmConfiguration;
         this.modelName = modelName;
     }
