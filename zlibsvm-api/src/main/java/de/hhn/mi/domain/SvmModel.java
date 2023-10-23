@@ -27,14 +27,14 @@ import java.util.Map;
  * A wrapper interface, which encapsulates a model for usage in a support vector machine. It is inspired by the
  * LIBSVM internally used model.
  *
- * @author rz
+ *
  */
 public interface SvmModel extends Serializable{
 
     SvmMetaInformation getMetaInformation();
 
     /**
-     * @return the coefficients for support vectors in the svm decision functions
+     * @return the coefficients for support vector in the svm decision functions
      */
     Map<Integer, List<Double>> getSvCoefficients();
 

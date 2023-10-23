@@ -34,7 +34,7 @@ import java.util.List;
 
 
 /**
- * @author rz (partly)
+ * (partly)
  */
 public class SvmClassifierImpl extends AbstractSvmClassifier {
 

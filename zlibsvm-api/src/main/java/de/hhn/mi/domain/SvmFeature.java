@@ -25,11 +25,11 @@ import java.io.Serializable;
  * An {@link SvmFeature feature} is a pair of two values. One representing its unique id within a given corpus and
  * the numeric feature value.
  * <p/>
- * Example: There are two documents in a given corpus, called A and B. A and B are containing the term t. The
- * index is a unique identifier for the term t in the corpus. However the feature value
+ * Example: There are two documents in a given corpus, called A and B. A and B contain the term t. The
+ * index is a unique identifier for the term t in the corpus. However, the feature value
  * must not be unique for a term t and can vary in A and B based on the chosen feature selection method.
  *
- * @author rz
+ *
  */
 public interface SvmFeature extends Comparable<SvmFeature>, Serializable
 

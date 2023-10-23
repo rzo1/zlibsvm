@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * @author rz
+ *
  */
 public class SvmMetaInformationImpl implements SvmMetaInformation {
     private final svm_model svmModel;

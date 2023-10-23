@@ -39,7 +39,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 /**
- * @author rz
+ *
  */
 public class SvmTrainingTestCase {
 
@@ -111,9 +111,9 @@ public class SvmTrainingTestCase {
 
     /**
      * Performs a tw.edu.ntu.csie.libsvm.reference test using the mushroom data taken from <a href="http://www.csie
-     * .ntu.edu .tw/~cjlin/libsvmtools/datasets/"> the LIBSVM data set collection</a>  in which a pre calculated model
+     * .ntu.edu .tw/~cjlin/libsvmtools/datasets/"> the LIBSVM data set collection</a>  in which a pre-calculated model
      * by java ported LIBSVM v3.17 is tested against a freshly calculated model based on the same data. <p/> To pass the
-     * test, the implementation must provide the same as the pre calculated model since the refactoring process did not
+     * test, the implementation must provide the same as the pre-calculated model since the refactoring process did not
      * affect the LIBSVM internals.
      */
     @Test

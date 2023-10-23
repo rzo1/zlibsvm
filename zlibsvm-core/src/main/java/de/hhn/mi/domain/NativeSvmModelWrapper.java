@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author rz
+ *
  */
 public class NativeSvmModelWrapper {
 

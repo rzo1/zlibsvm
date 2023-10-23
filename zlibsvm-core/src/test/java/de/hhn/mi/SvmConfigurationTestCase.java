@@ -26,7 +26,7 @@ import org.junit.Test;
 import static org.junit.Assert.fail;
 
 /**
- * @author rz
+ *
  */
 public class SvmConfigurationTestCase {
 

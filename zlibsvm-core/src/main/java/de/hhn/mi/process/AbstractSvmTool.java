@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * An {@link AbstractSvmTool} encapsulates some common issues occurring while working with the LIBSVM library.
  *
- * @author rz
+ *
  */
 public abstract class AbstractSvmTool {
 

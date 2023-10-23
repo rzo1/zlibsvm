@@ -24,7 +24,7 @@ import java.io.Serializable;
 /**
  * Builds a {@link SvmConfiguration} object.
  *
- * @author rz
+ *
  */
 public interface SvmConfigurationBuilder extends Serializable {
 
@@ -140,7 +140,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     SvmConfigurationBuilder setShrinking(boolean shrinking);
 
     /**
-     * Determines whether to train a SVC or SVR model for probability estimates.  <b>default: false</b>
+     * Determines whether to train an SVC or SVR model for probability estimates.  <b>default: false</b>
      *
      * @param probability {@code true} if to train for probability estimates, else {@code false}
      * @return this {@link SvmConfigurationBuilder builder}
@@ -150,7 +150,7 @@ public interface SvmConfigurationBuilder extends Serializable {
     /**
      * Sets the parameter C (cost) of a C-SVC svm for a specified class label to C*weight. <b>default: 1</b>
      *
-     * @param classLabel classLabel, who's parameter C should be weighted
+     * @param classLabel classLabel, whose parameter C should be weighted
      * @param weight     the weight
      * @return this {@link SvmConfigurationBuilder builder}
      */

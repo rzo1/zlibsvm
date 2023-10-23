@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * A trainer to use with LIBSVM.
  *
- * @author rz
+ *
  */
 public interface SvmTrainer {
 

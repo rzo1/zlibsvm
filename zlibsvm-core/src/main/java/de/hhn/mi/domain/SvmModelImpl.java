@@ -31,7 +31,7 @@ import java.util.Map;
 
 
 /**
- * @author rz
+ *
  */
 public class SvmModelImpl implements SvmModel {
 

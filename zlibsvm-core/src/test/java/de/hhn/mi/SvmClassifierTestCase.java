@@ -36,7 +36,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * @author rz
+ *
  */
 public class SvmClassifierTestCase {
 
@@ -125,9 +125,9 @@ public class SvmClassifierTestCase {
 
     /**
      * Performs a tw.edu.ntu.csie.libsvm.reference test using the mushroom data taken from <a href="http://www.csie
-     * .ntu.edu .tw/~cjlin/libsvmtools/datasets/"> the LIBSVM data set collection</a>  in which a pre calculated
+     * .ntu.edu .tw/~cjlin/libsvmtools/datasets/"> the LIBSVM data set collection</a>  in which a pre-calculated
      * classification result by java ported LIBSVM is tested against a freshly calculated classification result
-     * based on the same data. <p/> To pass the test, the implementation must provide the same as the pre calculated
+     * based on the same data. <p/> To pass the test, the implementation must provide the same as the pre-calculated
      * model (with a delta value of {@value #DELTA}) since the refactoring process did not affect the LIBSVM internals.
      */
     @Test

@@ -22,7 +22,7 @@ package de.hhn.mi.configuration;
 import de.hhn.mi.exception.ClassificationCoreException;
 
 /**
- * @author rz
+ *
  */
 public enum SvmType {
 

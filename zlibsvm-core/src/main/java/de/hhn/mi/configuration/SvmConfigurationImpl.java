@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author rz
+ *
  */
 public class SvmConfigurationImpl implements SvmConfiguration {
 

@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * A {@link SvmMetaInformation} encapsulates meta information of a {@link SvmModel}.
  *
- * @author rz
+ *
  */
 public interface SvmMetaInformation extends Serializable{
 

@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * A Classifier using LIBSVM for classification.
  *
- * @author rz
+ *
  */
 public interface SvmClassifier {
 

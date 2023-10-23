@@ -20,7 +20,7 @@
 package de.hhn.mi.domain;
 
 /**
- * @author rz
+ *
  */
 public class SvmClassLabelImpl implements SvmClassLabel {
 

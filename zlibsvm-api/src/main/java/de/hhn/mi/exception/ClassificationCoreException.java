@@ -23,7 +23,7 @@ package de.hhn.mi.exception;
  * A {@link ClassificationCoreException} is thrown, if something went wrong in the LIBSVM internals
  * and cannot be automatically solved (for example: calculation is not feasible).
  *
- * @author rz
+ *
  */
 public class ClassificationCoreException extends RuntimeException {
 

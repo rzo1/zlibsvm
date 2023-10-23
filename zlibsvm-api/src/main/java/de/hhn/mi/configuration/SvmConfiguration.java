@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * A svm configuration encapsulating necessary LIBSVM parameters.
  *
- * @author rz
+ *
  */
 public interface SvmConfiguration  extends Serializable {
 

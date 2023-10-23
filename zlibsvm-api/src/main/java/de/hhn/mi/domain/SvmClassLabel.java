@@ -24,7 +24,7 @@ import java.io.Serializable;
 /**
  * A {SvmClassLabel} represents a category in which a {@link SvmDocument document} can be classified.
  *
- * @author rz
+ *
  */
 public interface SvmClassLabel extends Comparable<SvmClassLabel>, Serializable {
 

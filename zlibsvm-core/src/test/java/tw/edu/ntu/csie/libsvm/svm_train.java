@@ -63,16 +63,12 @@ import java.util.Vector;
 public class svm_train {
     private svm_parameter param;        // set by parse_command_line
     private svm_problem prob;        // set by read_problem
-    private svm_model model;
     private String input_file_name;        // set by parse_command_line
     private String model_file_name;        // set by parse_command_line
-    private String error_msg;
     private int cross_validation;
     private int nr_fold;
 
-    private static svm_print_interface svm_print_null = new svm_print_interface() {
-        public void print(String s) {
-        }
+    private static final svm_print_interface svm_print_null = s -> {
     };
 
     private static void exit_with_help() {
@@ -142,10 +138,10 @@ public class svm_train {
         }
     }
 
-    private void run(String argv[]) throws IOException {
+    private void run(String[] argv) throws IOException {
         parse_command_line(argv);
         read_problem();
-        error_msg = svm.svm_check_parameter(prob, param);
+        String error_msg = svm.svm_check_parameter(prob, param);
 
         if (error_msg != null) {
             System.err.print("ERROR: " + error_msg + "\n");
@@ -155,12 +151,12 @@ public class svm_train {
         if (cross_validation != 0) {
             do_cross_validation();
         } else {
-            model = svm.svm_train(prob, param);
+            svm_model model = svm.svm_train(prob, param);
             svm.svm_save_model(model_file_name, model);
         }
     }
 
-    public static void main(String argv[]) throws IOException {
+    public static void main(String[] argv) throws IOException {
         svm_train t = new svm_train();
         t.run(argv);
     }
@@ -178,7 +174,7 @@ public class svm_train {
         return Integer.parseInt(s);
     }
 
-    private void parse_command_line(String argv[]) {
+    private void parse_command_line(String[] argv) {
         int i;
         svm_print_interface print_func = null;    // default printing to stdout
 

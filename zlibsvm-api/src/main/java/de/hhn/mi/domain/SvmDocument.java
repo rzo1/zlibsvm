@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * A {@link SvmDocument} is the numeric representation of a textual document.
  *
- * @author rz
+ *
  */
 public interface SvmDocument extends Serializable {
 
