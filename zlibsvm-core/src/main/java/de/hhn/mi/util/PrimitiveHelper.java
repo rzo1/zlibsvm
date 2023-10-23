@@ -31,13 +31,13 @@ import java.util.*;
 public class PrimitiveHelper {
 
     public static svm_node[][] svmFeatureMapTo2dArray(Map<Integer, List<SvmFeature>> svmFeatureMap) {
-        Set<Integer> set = svmFeatureMap.keySet();
-        svm_node[][] feature2dArray = new svm_node[set.size()][];
+        final Set<Integer> set = svmFeatureMap.keySet();
+        final svm_node[][] feature2dArray = new svm_node[set.size()][];
         for (Integer i : set) {
-            List<SvmFeature> features = svmFeatureMap.get(i);
+            final List<SvmFeature> features = svmFeatureMap.get(i);
             feature2dArray[i] = new svm_node[svmFeatureMap.get(i).size()];
             for (int j = 0; j < features.size(); j++) {
-                svm_node f = new svm_node();
+                final svm_node f = new svm_node();
                 f.index = features.get(j).getIndex();
                 f.value = features.get(j).getValue();
                 feature2dArray[i][j] = f;
@@ -47,13 +47,13 @@ public class PrimitiveHelper {
     }
 
     public static Map<Integer, List<SvmFeature>> svmFeature2dArrayToMap(svm_node[][] svmFeatures) {
-        Map<Integer, List<SvmFeature>> map = new HashMap<>();
+        final Map<Integer, List<SvmFeature>> map = new HashMap<>();
         for (int i = 0; i < svmFeatures.length; i++) {
 
-            List<SvmFeature> feature = new ArrayList<>();
+            final List<SvmFeature> feature = new ArrayList<>();
 
             for (int j = 0; j < svmFeatures[i].length; j++) {
-                SvmFeature f = new SvmFeatureImpl(svmFeatures[i][j].index, svmFeatures[i][j].value);
+                final SvmFeature f = new SvmFeatureImpl(svmFeatures[i][j].index, svmFeatures[i][j].value);
                 feature.add(f);
             }
             map.put(i, feature);
@@ -62,11 +62,11 @@ public class PrimitiveHelper {
     }
 
     public static double[][] doubleMapTo2dArray(Map<Integer, List<Double>> doubleMap) {
-        Set<Integer> set = doubleMap.keySet();
-        double[][] double2dArray = new double[set.size()][];
+        final Set<Integer> set = doubleMap.keySet();
+        final double[][] double2dArray = new double[set.size()][];
         for (Integer i : set) {
             double2dArray[i] = new double[doubleMap.get(i).size()];
-            List<Double> features = doubleMap.get(i);
+            final List<Double> features = doubleMap.get(i);
             for (int j = 0; j < features.size(); j++) {
                 double2dArray[i][j] = features.get(j);
             }
@@ -75,9 +75,9 @@ public class PrimitiveHelper {
     }
 
     public static Map<Integer, List<Double>> double2dArrayToMap(double[][] doubleArray) {
-        Map<Integer, List<Double>> map = new HashMap<>();
+        final Map<Integer, List<Double>> map = new HashMap<>();
         for (int i = 0; i < doubleArray.length; i++) {
-            List<Double> doubleList = new ArrayList<>();
+            final List<Double> doubleList = new ArrayList<>();
             for (int j = 0; j < doubleArray[i].length; j++) {
                 doubleList.add(doubleArray[i][j]);
             }

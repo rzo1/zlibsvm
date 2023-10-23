@@ -44,20 +44,14 @@ public enum SvmType {
      * @throws ClassificationCoreException if there is no kernel for the given argument.
      */
     public static SvmType getByValue(int svmType) {
-        switch (svmType) {
-            case 0:
-                return C_SVC;
-            case 1:
-                return NU_SVC;
-            case 2:
-                return ONE_CLASS;
-            case 3:
-                return EPSILON_SVR;
-            case 4:
-                return NU_SVR;
-            default:
-                throw new ClassificationCoreException("unknown svm type");
-        }
+      return switch (svmType) {
+        case 0 -> C_SVC;
+        case 1 -> NU_SVC;
+        case 2 -> ONE_CLASS;
+        case 3 -> EPSILON_SVR;
+        case 4 -> NU_SVR;
+        default -> throw new ClassificationCoreException("unknown svm type");
+      };
 
     }
 

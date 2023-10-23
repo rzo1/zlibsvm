@@ -162,7 +162,7 @@ public class svm_train {
     }
 
     private static double atof(String s) {
-        double d = Double.valueOf(s).doubleValue();
+        double d = Double.parseDouble(s);
         if (Double.isNaN(d) || Double.isInfinite(d)) {
             System.err.print("NaN or Infinity in input\n");
             System.exit(1);
@@ -297,8 +297,8 @@ public class svm_train {
     private void read_problem() throws IOException {
         BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream
                 (input_file_name), StandardCharsets.UTF_8));
-        Vector<Double> vy = new Vector<Double>();
-        Vector<svm_node[]> vx = new Vector<svm_node[]>();
+        Vector<Double> vy = new Vector<>();
+        Vector<svm_node[]> vx = new Vector<>();
         int max_index = 0;
         //skip first line because of meta information
         fp.readLine();

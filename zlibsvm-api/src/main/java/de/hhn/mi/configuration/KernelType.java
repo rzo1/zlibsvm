@@ -44,20 +44,14 @@ public enum KernelType {
      * @throws ClassificationCoreException if there is no kernel for the given argument.
      */
     public static KernelType getByValue(int kernelType) {
-        switch (kernelType) {
-            case 0:
-                return LINEAR;
-            case 1:
-                return POLYNOMIAL;
-            case 2:
-                return RBF;
-            case 3:
-                return SIGMOID;
-            case 4:
-                return PRECOMPUTED;
-            default:
-                throw new ClassificationCoreException("unknown kernel type");
-        }
+      return switch (kernelType) {
+        case 0 -> LINEAR;
+        case 1 -> POLYNOMIAL;
+        case 2 -> RBF;
+        case 3 -> SIGMOID;
+        case 4 -> PRECOMPUTED;
+        default -> throw new ClassificationCoreException("unknown kernel type");
+      };
 
     }
 
