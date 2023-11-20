@@ -70,10 +70,10 @@ public class SvmClassifierImpl extends AbstractSvmClassifier {
         double sumOfEstimatedClassLabels = 0, sumOfTargetClassLabels = 0, sumOfEstimatedClassLabelsSquared = 0,
                 sumOfTargetClassLabelsSquared = 0, sumMultipliedEstimatedTargetClassLabels = 0;
 
-        SvmType svmType = SvmType.getByValue(svm.svm_get_svm_type(getSvmModel()));
-        int numberOfClasses = svm.svm_get_nr_class(getSvmModel());
-        double[] estimatedProbabilities = new double[numberOfClasses];
-        int[] labels = new int[numberOfClasses];
+        final SvmType svmType = SvmType.getByValue(svm.svm_get_svm_type(getSvmModel()));
+        final int numberOfClasses = svm.svm_get_nr_class(getSvmModel());
+        final double[] estimatedProbabilities = new double[numberOfClasses];
+        final int[] labels = new int[numberOfClasses];
 
         if (probabilityEstimates) {
             if (svmType == SvmType.EPSILON_SVR
@@ -90,37 +90,35 @@ public class SvmClassifierImpl extends AbstractSvmClassifier {
         for (SvmDocument svmDocument : documents) {
             validate = (svmDocument.getClassLabelWithHighestProbability() != null);
 
-            svm_node[] x = super.readProblem(svmDocument);
+            final svm_node[] x = super.readProblem(svmDocument);
 
-            double estimatedClassLabel;
-            List<SvmClassLabel> classLabels = new ArrayList<>();
+            double predictedClassLabel;
+            final List<SvmClassLabel> classLabels = new ArrayList<>();
 
             if (probabilityEstimates
                     && (svmType == SvmType.C_SVC || svmType == SvmType.NU_SVC)) {
-                estimatedClassLabel = svm.svm_predict_probability(getSvmModel(), x, estimatedProbabilities);
+                predictedClassLabel = svm.svm_predict_probability(getSvmModel(), x, estimatedProbabilities);
 
                 for (int i = 0; i < numberOfClasses; i++) {
-                    SvmClassLabel scl = new SvmClassLabelImpl(labels[i]);
-                    scl.setProbability(estimatedProbabilities[i]);
-                    classLabels.add(scl);
+                    classLabels.add(new SvmClassLabelImpl(labels[i], String.valueOf(labels[i]), estimatedProbabilities[i]));
                 }
             } else {
-                estimatedClassLabel = svm.svm_predict(getSvmModel(), x);
-                classLabels.add(new SvmClassLabelImpl(estimatedClassLabel));
+                predictedClassLabel = svm.svm_predict(getSvmModel(), x);
+                classLabels.add(new SvmClassLabelImpl(predictedClassLabel));
             }
 
             //classLabel is only set, if the former classLabel was null
             if (validate) {
                 double targetClassLabel = svmDocument.getClassLabelWithHighestProbability().getNumeric();
-                if (estimatedClassLabel == targetClassLabel)
+                if (predictedClassLabel == targetClassLabel)
                     ++correctEstimated;
                 // some regression correlation coefficient issue
-                error += (estimatedClassLabel - targetClassLabel) * (estimatedClassLabel - targetClassLabel);
-                sumOfEstimatedClassLabels += estimatedClassLabel;
+                error += (predictedClassLabel - targetClassLabel) * (predictedClassLabel - targetClassLabel);
+                sumOfEstimatedClassLabels += predictedClassLabel;
                 sumOfTargetClassLabels += targetClassLabel;
-                sumOfEstimatedClassLabelsSquared += estimatedClassLabel * estimatedClassLabel;
+                sumOfEstimatedClassLabelsSquared += predictedClassLabel * predictedClassLabel;
                 sumOfTargetClassLabelsSquared += targetClassLabel * targetClassLabel;
-                sumMultipliedEstimatedTargetClassLabels += estimatedClassLabel * targetClassLabel;
+                sumMultipliedEstimatedTargetClassLabels += predictedClassLabel * targetClassLabel;
                 ++totalEstimated;
             } else {
                 for (SvmClassLabel classLabel : classLabels) {

@@ -20,8 +20,8 @@
 package de.hhn.mi.domain;
 
 import de.hhn.mi.configuration.SvmConfiguration;
+import de.hhn.mi.shade.org.apache.commons.lang3.ArrayUtils;
 import libsvm.svm_model;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

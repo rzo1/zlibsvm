@@ -82,8 +82,7 @@ public class TestInputReader {
     }
 
     public List<SvmDocument> readClassifiedDocuments(String classifiedDocs, boolean predict) throws IOException {
-        try(BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(classifiedDocs), StandardCharsets.UTF_8))) {
-
+        try (BufferedReader fp = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(classifiedDocs), StandardCharsets.UTF_8))) {
 
             fp.readLine(); //skip the first line because of header information
             List<SvmDocument> classifiedDocuments = new ArrayList<>();
@@ -96,16 +95,18 @@ public class TestInputReader {
 
                 SvmDocument doc = new SvmDocumentMock(new ArrayList<>());
 
-                SvmClassLabel label = new SvmClassLabelImpl(estimatedClassLabel);
+
                 if (predict) {
                     List<Double> probability = new ArrayList<>();
 
                     for (int i = 1; i < split.length; i++) {
                         probability.add(Double.parseDouble(split[i]));
                     }
-                    label.setProbability(Collections.max(probability));
+                    doc.addClassLabel(new SvmClassLabelImpl(estimatedClassLabel, String.valueOf(estimatedClassLabel), Collections.max(probability)));
+                } else {
+                    doc.addClassLabel(new SvmClassLabelImpl(estimatedClassLabel));
                 }
-                doc.addClassLabel(label);
+
                 classifiedDocuments.add(doc);
             }
             return classifiedDocuments;

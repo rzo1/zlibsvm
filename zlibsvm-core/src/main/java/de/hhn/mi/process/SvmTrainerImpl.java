@@ -153,7 +153,7 @@ public class SvmTrainerImpl extends AbstractSvmTrainer {
     @Override
     protected void validateConfiguration() {
         //not nice, but library issue
-        String errorMsg = svm.svm_check_parameter(getProblem(), getParam());
+        final String errorMsg = svm.svm_check_parameter(getProblem(), getParam());
         if (errorMsg != null) {
             throw new ClassificationCoreException("Error: " + errorMsg);
         }

@@ -139,8 +139,11 @@
                     <configuration>
                         <verbose>false</verbose>
                         <includes>
-                            <includes>**/*.java</includes>
+                            <include>**/*.java</include>
                         </includes>
+                        <excludes>
+                            <exclude>**/ArrayUtils.java</exclude>
+                        </excludes>
                     </configuration>
                     <executions>
                         <execution>

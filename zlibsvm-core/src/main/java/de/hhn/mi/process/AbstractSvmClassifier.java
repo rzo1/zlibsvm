@@ -22,9 +22,9 @@ package de.hhn.mi.process;
 import de.hhn.mi.domain.SvmDocument;
 import de.hhn.mi.domain.SvmMetaInformation;
 import de.hhn.mi.domain.SvmModel;
+import de.hhn.mi.shade.org.apache.commons.lang3.ArrayUtils;
 import de.hhn.mi.util.PrimitiveHelper;
 import libsvm.svm_model;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
 

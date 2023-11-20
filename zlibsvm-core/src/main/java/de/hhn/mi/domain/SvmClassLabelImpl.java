@@ -19,59 +19,35 @@
  */
 package de.hhn.mi.domain;
 
-/**
- *
- */
-public class SvmClassLabelImpl implements SvmClassLabel {
-
-    private final double numeric;
-    private final String name;
-    private Double probability = 1.0d;
-
-    /**
-     * /** The probability is by default set to 1.0d.
-     *
-     * @param numeric No restrictions on this parameter
-     */
-    public SvmClassLabelImpl(double numeric) {
-       this(numeric, "");
-    }
+public record SvmClassLabelImpl(double numeric, String name, Double probability) implements SvmClassLabel {
 
     /**
      * The probability is by default set to 1.0d.
      *
      * @param numeric No restrictions on this parameter
-     * @param name    No restrictions on this parameter
      */
-    public SvmClassLabelImpl(double numeric, String name) {
-        this.numeric = numeric;
-        this.name = name;
+    public SvmClassLabelImpl(double numeric) {
+       this(numeric, String.valueOf(numeric), 1.0d);
     }
 
     @Override
     public double getNumeric() {
-        return numeric;
+        return numeric();
     }
 
     @Override
     public String getName() {
-        return name;
+        return name();
     }
 
     @Override
     public double getProbability() {
-        return probability;
+        return probability();
     }
-
-    @Override
-    public void setProbability(double probability) {
-        assert (probability <= 1.0d);
-        this.probability = probability;
-    }
-
 
     @Override
     public int compareTo(SvmClassLabel o) {
-        return this.probability.compareTo(o.getProbability());
+        return Double.compare(getProbability(), o.getProbability());
     }
+
 }

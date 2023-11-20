@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,22 +28,8 @@ import java.io.Serializable;
  * Example: There are two documents in a given corpus, called A and B. A and B contain the term t. The
  * index is a unique identifier for the term t in the corpus. However, the feature value
  * must not be unique for a term t and can vary in A and B based on the chosen feature selection method.
- *
- *
  */
-public interface SvmFeature extends Comparable<SvmFeature>, Serializable
-
-{
-    /**
-     * @param index must be greater than zero
-     * @throws AssertionError if a given parameter is invalid
-     */
-    void setIndex(int index);
-
-    /**
-     * @param value no restrictions on this parameter
-     */
-    void setValue(double value);
+public interface SvmFeature extends Comparable<SvmFeature>, Serializable {
 
     int getIndex();
 

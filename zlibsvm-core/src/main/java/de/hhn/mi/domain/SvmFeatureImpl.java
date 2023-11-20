@@ -19,34 +19,14 @@
  */
 package de.hhn.mi.domain;
 
-public class SvmFeatureImpl implements SvmFeature {
-    private int index;
-    private double value;
-
-    public SvmFeatureImpl() {
-
-    }
-
-    public SvmFeatureImpl(int index, double value) {
-        this.index = index;
-        this.value = value;
-    }
-
+public record SvmFeatureImpl(int index, double value) implements SvmFeature {
 
     public int getIndex() {
         return index;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
     public double getValue() {
         return value;
-    }
-
-    public void setValue(double value) {
-        this.value = value;
     }
 
     /**

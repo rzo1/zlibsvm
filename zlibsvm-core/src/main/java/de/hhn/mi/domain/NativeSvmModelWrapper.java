@@ -21,9 +21,9 @@ package de.hhn.mi.domain;
 
 import de.hhn.mi.configuration.SvmConfigurationBuilder;
 import de.hhn.mi.process.AbstractSvmTool;
+import de.hhn.mi.shade.org.apache.commons.lang3.ArrayUtils;
 import de.hhn.mi.util.PrimitiveHelper;
 import libsvm.svm_model;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
 import java.util.Map;

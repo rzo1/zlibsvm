@@ -19,7 +19,7 @@
  */
 package de.hhn.mi.configuration;
 
-import org.apache.commons.lang3.ArrayUtils;
+import de.hhn.mi.shade.org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Arrays;
 import java.util.List;

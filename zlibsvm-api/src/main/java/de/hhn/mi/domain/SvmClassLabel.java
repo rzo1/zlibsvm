@@ -34,10 +34,4 @@ public interface SvmClassLabel extends Comparable<SvmClassLabel>, Serializable {
 
     double getProbability();
 
-    /**
-     * @param probability must be in the interval 0 to 1
-     * @throws AssertionError if a given parameter is invalid.
-     */
-    void setProbability(double probability);
-
 }

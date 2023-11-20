@@ -22,10 +22,10 @@ package de.hhn.mi.process;
 import de.hhn.mi.configuration.SvmConfiguration;
 import de.hhn.mi.domain.SvmDocument;
 import de.hhn.mi.domain.SvmFeature;
+import de.hhn.mi.shade.org.apache.commons.lang3.ArrayUtils;
 import libsvm.svm;
 import libsvm.svm_node;
 import libsvm.svm_parameter;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
 
