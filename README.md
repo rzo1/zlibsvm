@@ -10,12 +10,12 @@ It encapsulates the cross-compiled Java code from **LIBSVM** behind an object-or
 
 To use the latest release of **zlibsvm**, please use the following snippet in your `pom.xml`
 
-#### Java 11+
+#### Java 17+
 ```xml
     <dependency>
         <groupId>de.hs-heilbronn.mi</groupId>
         <artifactId>zlibsvm-core</artifactId>
-        <version>2.0.9</version>
+        <version>2.1.0</version>
     </dependency>
 ```
 
@@ -91,40 +91,21 @@ First of all, you need to implement your custom `SvmDocument` and a custom `SvmF
 ```
 
 ```java
-     public class SvmFeatureImpl implements SvmFeature {
-     
-         private int index;
-         private double value;
-     
-         public SvmFeatureImpl(int index, double value) {
-             this.index = index;
-             this.value = value;
-         }
-     
-         public int getIndex() {
-             return index;
-         }
-     
-         public double getValue() {
-             return value;
-         }
-     
-         public void setIndex(int index) {
-             this.index = index;
-     
-         }
-     
-         public void setValue(double value) {
-             this.value = value;
-     
-         }
-     
-         @Override
-         public int compareTo(SvmFeature o) {
-             throw new UnsupportedOperationException("TODO: Implement this method for real use-cases");
-         }
-     }
-      
+public record SvmFeatureImpl(int index, double value) implements SvmFeature {
+
+    public int getIndex() {
+        return index;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    @Override
+    public int compareTo(SvmFeature o) {
+        return Integer.compare(getIndex(), o.getIndex());
+    }
+}
 ```
 
 To obtain an `SvmModel` the SVM needs to be trained. This is done via an `SvmConfigurationImpl.Builder()`, which is used to specify your custom SVM configuration.
