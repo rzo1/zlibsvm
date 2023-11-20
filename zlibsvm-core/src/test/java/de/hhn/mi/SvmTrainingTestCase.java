@@ -64,10 +64,9 @@ public class SvmTrainingTestCase {
         try {
             new SvmTrainerImpl(null, null);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");
@@ -80,10 +79,9 @@ public class SvmTrainingTestCase {
         try {
             new SvmTrainerImpl(config, MODEL_NAME).train(null);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");
@@ -96,10 +94,9 @@ public class SvmTrainingTestCase {
         try {
             new SvmTrainerImpl(config, MODEL_NAME).train(new ArrayList<>());
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");

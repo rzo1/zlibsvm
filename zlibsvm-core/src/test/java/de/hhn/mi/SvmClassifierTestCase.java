@@ -76,10 +76,9 @@ public class SvmClassifierTestCase {
         try {
             new SvmClassifierImpl(null);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");
@@ -92,10 +91,9 @@ public class SvmClassifierTestCase {
         try {
             new SvmClassifierImpl(ownModel).classify(null, false);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");
@@ -108,10 +106,9 @@ public class SvmClassifierTestCase {
         try {
             new SvmClassifierImpl(ownModel).classify(new ArrayList<>(), false);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");

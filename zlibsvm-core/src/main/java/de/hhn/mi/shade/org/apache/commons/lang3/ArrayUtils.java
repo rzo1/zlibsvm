@@ -51,7 +51,7 @@ public class ArrayUtils {
         }
         final double[] result = new double[array.length];
         for (int i = 0; i < array.length; i++) {
-            result[i] = array[i].doubleValue();
+            result[i] = array[i];
         }
         return result;
     }
@@ -75,7 +75,7 @@ public class ArrayUtils {
         }
         final int[] result = new int[array.length];
         for (int i = 0; i < array.length; i++) {
-            result[i] = array[i].intValue();
+            result[i] = array[i];
         }
         return result;
     }

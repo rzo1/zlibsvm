@@ -51,8 +51,8 @@ public record NativeSvmModelWrapper(svm_model svmModel) {
 
         this(new svm_model());
 
-        svmModel.l = (amountOfSupportVectors);
-        svmModel.nr_class = (numberOfClasses);
+        svmModel.l = amountOfSupportVectors;
+        svmModel.nr_class = numberOfClasses;
 
         svmModel.rho = (ArrayUtils.toPrimitive(rhoConstants.toArray(new Double[0])));
         svmModel.probA = (ArrayUtils.toPrimitive(probabilityA.toArray(new Double[0])));

@@ -38,10 +38,9 @@ public class SvmConfigurationTestCase {
         try {
             builder.setDegree(-1);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");
@@ -54,10 +53,9 @@ public class SvmConfigurationTestCase {
         try {
             builder.setGamma(-1.0d);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");
@@ -70,10 +68,9 @@ public class SvmConfigurationTestCase {
         try {
             builder.setNu(-1.0d);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");
@@ -87,10 +84,9 @@ public class SvmConfigurationTestCase {
         try {
             builder.setNu(1.1d);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");
@@ -103,7 +99,7 @@ public class SvmConfigurationTestCase {
         try {
             builder.setCacheSize(-1);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -119,10 +115,9 @@ public class SvmConfigurationTestCase {
         try {
             builder.setCost(0.0d);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");
@@ -135,10 +130,9 @@ public class SvmConfigurationTestCase {
         try {
             builder.setEpsilon(0.0d);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");
@@ -151,10 +145,9 @@ public class SvmConfigurationTestCase {
         try {
             builder.setP(-1.0d);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");
@@ -167,10 +160,9 @@ public class SvmConfigurationTestCase {
         try {
             builder.setCrossValidation(true, 1);
             failed = true;
-        } catch (AssertionError ae) {
+        } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");

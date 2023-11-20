@@ -31,8 +31,4 @@ public class ClassificationCoreException extends RuntimeException {
         super(message);
     }
 
-    public ClassificationCoreException(String message, Throwable throwable) {
-        super(message, throwable);
-    }
-
 }
