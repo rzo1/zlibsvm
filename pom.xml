@@ -7,7 +7,7 @@
     <groupId>de.hs-heilbronn.mi</groupId>
     <artifactId>zlibsvm</artifactId>
     <packaging>pom</packaging>
-    <version>2.1.0</version>
+    <version>2.1.1-SNAPSHOT</version>
 
     <name>zlibsvm</name>
     <description>A Java binding for the famous LIBSVM library</description>
@@ -78,7 +78,7 @@
         <maven.compile.encoding>UTF-8</maven.compile.encoding>
         <maven.compiler.target>${java.target}</maven.compiler.target>
 
-        <zlibsvm.version>2.1.0</zlibsvm.version>
+        <zlibsvm.version>2.1.1-SNAPSHOT</zlibsvm.version>
         <libsvm.version>3.31</libsvm.version>
         <!-- apache commons stuff -->
         <commons.lang3.version>3.13.0</commons.lang3.version>
