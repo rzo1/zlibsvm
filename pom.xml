@@ -87,7 +87,7 @@
         <junit.version>4.13.2</junit.version>
 
         <slf4j.version>1.7.36</slf4j.version>
-        <log4j.version>2.22.0</log4j.version>
+        <log4j.version>2.22.1</log4j.version>
 
         <maven.license.plugin>2.3.0</maven.license.plugin>
         <maven.compiler.plugin>3.12.1</maven.compiler.plugin>
