@@ -95,7 +95,7 @@
         <maven.javadoc.plugin>3.6.3</maven.javadoc.plugin>
         <forbiddenapis.plugin>3.6</forbiddenapis.plugin>
         <maven.surefire.plugin>3.2.5</maven.surefire.plugin>
-        <maven.gpg.plugin>3.1.0</maven.gpg.plugin>
+        <maven.gpg.plugin>3.2.1</maven.gpg.plugin>
         <maven.versions.version>2.16.2</maven.versions.version>
     </properties>
 
