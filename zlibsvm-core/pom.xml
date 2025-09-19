@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>zlibsvm-core</artifactId>
+    <name>zlibsvm-core</name>
 
     <dependencies>
         <dependency>
