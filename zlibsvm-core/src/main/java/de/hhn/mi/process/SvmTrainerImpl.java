@@ -124,15 +124,13 @@ public class SvmTrainerImpl extends AbstractSvmTrainer {
                 sumyy += y * y;
                 sumvy += v * y;
             }
-            logger.info("Cross Validation Mean squared error = "
-                    + amountOfErrors / getProblem().l);
+            logger.info("Cross Validation Mean squared error = {}", amountOfErrors / getProblem().l);
 
             double scc = ((getProblem().l * sumvy - sumv * sumy) * (getProblem().l * sumvy - sumv
                     * sumy))
                     / ((getProblem().l * sumvv - sumv * sumv) * (getProblem().l * sumyy - sumy
                     * sumy));
-            logger.info("Cross Validation Squared correlation coefficient = "
-                    + scc);
+            logger.info("Cross Validation Squared correlation coefficient = {}", scc);
             return scc;
         } else {
             for (i = 0; i < getProblem().l; i++)
@@ -141,7 +139,7 @@ public class SvmTrainerImpl extends AbstractSvmTrainer {
 
             double accuracy = 100.0
                     * amountOfCorrect / getProblem().l;
-            logger.info("Cross Validation Accuracy = " + accuracy);
+            logger.info("Cross Validation Accuracy = {}", accuracy);
             return accuracy;
 
         }

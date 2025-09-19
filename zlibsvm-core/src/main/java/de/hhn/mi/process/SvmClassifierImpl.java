@@ -80,8 +80,8 @@ public class SvmClassifierImpl extends AbstractSvmClassifier {
                     || svmType == SvmType.NU_SVR) {
                 logger
                         .info("Prob. model for test data: target value = predicted value + z,  " +
-                                "z: Laplace distribution e^(-|z|/sigma)/(2sigma),sigma="
-                                + svm.svm_get_svr_probability(getSvmModel()));
+                                "z: Laplace distribution e^(-|z|/sigma)/(2sigma),sigma={}",
+                                 svm.svm_get_svr_probability(getSvmModel()));
             } else {
                 svm.svm_get_labels(getSvmModel(), labels);
             }
@@ -130,20 +130,17 @@ public class SvmClassifierImpl extends AbstractSvmClassifier {
         if (validate) {
             if (svmType == SvmType.EPSILON_SVR
                     || svmType == SvmType.NU_SVR) {
-                logger.info("Mean squared error = " + error / totalEstimated
-                        + " (regression)\n");
-                logger.info("Squared correlation coefficient = "
-                        + ((totalEstimated * sumMultipliedEstimatedTargetClassLabels -
+                logger.info("Mean squared error = {} (regression)", error / totalEstimated);
+                logger.info("Squared correlation coefficient = {} (regression)", ((totalEstimated * sumMultipliedEstimatedTargetClassLabels -
                         sumOfEstimatedClassLabels * sumOfTargetClassLabels) * (totalEstimated *
                         sumMultipliedEstimatedTargetClassLabels - sumOfEstimatedClassLabels
                         * sumOfTargetClassLabels))
                         / ((totalEstimated * sumOfEstimatedClassLabelsSquared - sumOfEstimatedClassLabels *
                         sumOfEstimatedClassLabels) * (totalEstimated * sumOfTargetClassLabelsSquared -
                         sumOfTargetClassLabels
-                                * sumOfTargetClassLabels)) + " (regression)\n");
+                                * sumOfTargetClassLabels)));
             } else
-                logger.info("Accuracy = " + (double) correctEstimated / totalEstimated * 100
-                        + "% (" + correctEstimated + "/" + totalEstimated + ") (classification)");
+                logger.info("Accuracy = {}% ({}/{}) (classification)", (double) correctEstimated / totalEstimated * 100, correctEstimated, totalEstimated);
         }
         return documents;
     }

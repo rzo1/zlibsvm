@@ -48,7 +48,6 @@ public class SvmConfigurationTestCase {
 
         if (failed)
             fail("setting a degree < 0 worked");
-        failed = false;
 
         try {
             builder.setGamma(-1.0d);
@@ -63,7 +62,6 @@ public class SvmConfigurationTestCase {
 
         if (failed)
             fail("setting a gamma < 0 worked");
-        failed = false;
 
         try {
             builder.setNu(-1.0d);
@@ -78,8 +76,6 @@ public class SvmConfigurationTestCase {
 
         if (failed)
             fail("setting a nu < 0 worked");
-        failed = false;
-
 
         try {
             builder.setNu(1.1d);
@@ -94,7 +90,6 @@ public class SvmConfigurationTestCase {
 
         if (failed)
             fail("setting a nu > 1 worked");
-        failed = false;
 
         try {
             builder.setCacheSize(-1);
@@ -102,7 +97,6 @@ public class SvmConfigurationTestCase {
         } catch (AssertionError ignored) {
 
         } catch (Exception e) {
-            e.printStackTrace();
             fail("caught Exception of type "
                     + e.getClass().getName()
                     + " instead of an AssertionError. See stacktrace for further information.");
@@ -110,7 +104,6 @@ public class SvmConfigurationTestCase {
 
         if (failed)
             fail("setting a cache size < 0 worked");
-        failed = false;
 
         try {
             builder.setCost(0.0d);
@@ -125,7 +118,6 @@ public class SvmConfigurationTestCase {
 
         if (failed)
             fail("setting cost <= 0 worked");
-        failed = false;
 
         try {
             builder.setEpsilon(0.0d);
@@ -140,7 +132,6 @@ public class SvmConfigurationTestCase {
 
         if (failed)
             fail("setting eps <= 0 worked");
-        failed = false;
 
         try {
             builder.setP(-1.0d);
@@ -155,7 +146,6 @@ public class SvmConfigurationTestCase {
 
         if (failed)
             fail("setting a p value < 0 worked");
-        failed = false;
 
         try {
             builder.setCrossValidation(true, 1);

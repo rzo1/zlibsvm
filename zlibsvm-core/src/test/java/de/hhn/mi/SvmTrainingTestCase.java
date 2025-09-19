@@ -74,7 +74,6 @@ public class SvmTrainingTestCase {
 
         if (failed)
             fail("creating a svm trainer with nulled config worked");
-        failed = false;
 
         try {
             new SvmTrainerImpl(config, MODEL_NAME).train(null);
@@ -89,7 +88,6 @@ public class SvmTrainingTestCase {
 
         if (failed)
             fail("training with nulled list worked");
-        failed = false;
 
         try {
             new SvmTrainerImpl(config, MODEL_NAME).train(new ArrayList<>());
@@ -180,7 +178,7 @@ public class SvmTrainingTestCase {
         Map<Integer, List<Double>> supportVectorCoefficientsReference = referenceModel.getSvCoefficients();
         Map<Integer, List<Double>> ownSupportVectorCoefficients = ownModel.getSvCoefficients();
 
-        assertEquals(supportVectorCoefficientsReference.keySet().size(), ownSupportVectorCoefficients.keySet().size());
+        assertEquals(supportVectorCoefficientsReference.size(), ownSupportVectorCoefficients.size());
 
         for (Integer i : supportVectorCoefficientsReference.keySet()) {
             List<Double> reference = supportVectorCoefficientsReference.get(i);

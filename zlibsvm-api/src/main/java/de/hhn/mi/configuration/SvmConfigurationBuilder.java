@@ -23,8 +23,6 @@ import java.io.Serializable;
 
 /**
  * Builds a {@link SvmConfiguration} object.
- *
- *
  */
 public interface SvmConfigurationBuilder extends Serializable {
 

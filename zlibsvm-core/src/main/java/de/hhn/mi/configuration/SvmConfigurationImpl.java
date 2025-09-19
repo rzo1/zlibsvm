@@ -23,6 +23,7 @@ import de.hhn.mi.shade.org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -189,32 +190,24 @@ public class SvmConfigurationImpl implements SvmConfiguration {
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = svmType != null ? svmType.hashCode() : 0;
-        result = 31 * result + (kernelType != null ? kernelType.hashCode() : 0);
+        int result = Objects.hashCode(svmType);
+        result = 31 * result + Objects.hashCode(kernelType);
         result = 31 * result + degree;
-        temp = Double.doubleToLongBits(gamma);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(coef0);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(nu);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(cacheSize);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(cost);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(eps);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(p);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + Double.hashCode(gamma);
+        result = 31 * result + Double.hashCode(coef0);
+        result = 31 * result + Double.hashCode(nu);
+        result = 31 * result + Double.hashCode(cacheSize);
+        result = 31 * result + Double.hashCode(cost);
+        result = 31 * result + Double.hashCode(eps);
+        result = 31 * result + Double.hashCode(p);
         result = 31 * result + shrinking;
         result = 31 * result + probability;
         result = 31 * result + nrWeight;
         result = 31 * result + crossValidation;
-        result = 31 * result + (weightLabel != null ? Arrays.hashCode(weightLabel) : 0);
-        result = 31 * result + (weight != null ? Arrays.hashCode(weight) : 0);
+        result = 31 * result + Arrays.hashCode(weightLabel);
+        result = 31 * result + Arrays.hashCode(weight);
         result = 31 * result + nFold;
+        result = 31 * result + Boolean.hashCode(quietMode);
         return result;
     }
 

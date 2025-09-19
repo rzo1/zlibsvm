@@ -86,7 +86,6 @@ public class SvmClassifierTestCase {
 
         if (failed)
             fail("creating a svm classifier with nulled model worked");
-        failed = false;
 
         try {
             new SvmClassifierImpl(ownModel).classify(null, false);
@@ -101,7 +100,6 @@ public class SvmClassifierTestCase {
 
         if (failed)
             fail("classifying with nulled list worked");
-        failed = false;
 
         try {
             new SvmClassifierImpl(ownModel).classify(new ArrayList<>(), false);
