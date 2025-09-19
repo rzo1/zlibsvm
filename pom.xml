@@ -63,7 +63,7 @@
 
     <properties>
         <!-- Application settings -->
-        <copyright.year>2023</copyright.year>
+        <copyright.year>2025</copyright.year>
         <license.inceptionYear>2014</license.inceptionYear>
         <license.licenseName>apache_v2</license.licenseName>
 
@@ -291,6 +291,7 @@
                         <extensions>true</extensions>
                         <configuration>
                             <publishingServerId>central</publishingServerId>
+                            <deploymentName>zlibsvm</deploymentName>
                         </configuration>
                     </plugin>
                 </plugins>
