@@ -23,6 +23,7 @@ import de.hhn.mi.shade.org.apache.commons.lang3.ArrayUtils;
 import libsvm.svm_parameter;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -123,12 +124,12 @@ public class SvmConfigurationImpl implements SvmConfiguration {
 
     @Override
     public List<Double> getWeight() {
-        return Arrays.asList(ArrayUtils.toObject(weight));
+        return Collections.unmodifiableList(Arrays.asList(ArrayUtils.toObject(weight)));
     }
 
     @Override
     public List<Integer> getWeightLabel() {
-        return Arrays.asList(ArrayUtils.toObject(weightLabel));
+        return Collections.unmodifiableList(Arrays.asList(ArrayUtils.toObject(weightLabel)));
     }
 
     @Override

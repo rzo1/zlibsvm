@@ -51,6 +51,6 @@ public class SvmFeatureMock implements SvmFeature {
 
     @Override
     public int compareTo(SvmFeature o) {
-        throw new UnsupportedOperationException("not needed for mock");
+        return Integer.compare(getIndex(), o.getIndex());
     }
 }

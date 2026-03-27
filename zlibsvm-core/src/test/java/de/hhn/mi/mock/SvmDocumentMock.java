@@ -37,7 +37,7 @@ public class SvmDocumentMock implements SvmDocument {
     }
 
     public List<SvmFeature> getSvmFeatures() {
-        return features;
+        return Collections.unmodifiableList(features);
     }
 
     public SvmClassLabel getClassLabelWithHighestProbability() {
