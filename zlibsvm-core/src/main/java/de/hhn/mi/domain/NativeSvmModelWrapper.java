@@ -29,22 +29,54 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Wraps a native LIBSVM {@link svm_model} and provides constructors to build one
+ * from higher-level domain objects. Serves as a bridge between the zlibsvm domain model
+ * and LIBSVM's raw data structures.
  *
+ * @param svmModel the native LIBSVM model
  */
 public record NativeSvmModelWrapper(svm_model svmModel) {
 
+    /**
+     * Convenience constructor that creates a native model without support vectors or coefficients.
+     *
+     * @param svmConfigurationBuilder the configuration builder to derive LIBSVM parameters from
+     * @param probabilityEstimates    1 if probability estimates are enabled, 0 otherwise
+     * @param rhoConstants            the rho constants for the decision functions
+     * @param labelForEachClass       the numeric labels for each class
+     * @param probabilityA            the pairwise probability coefficients A
+     * @param probabilityB            the pairwise probability coefficients B
+     * @param numberOfSVforEachClass  the number of support vectors per class
+     * @param numberOfClasses         the total number of classes
+     * @param amountOfSupportVectors  the total number of support vectors
+     */
     public NativeSvmModelWrapper(SvmConfigurationBuilder svmConfigurationBuilder, int probabilityEstimates,
                                  List<Double> rhoConstants, List<Integer>
-            labelForEachClass, List<Double> probabilityA, List<Double> probabilityB, List<Integer>
+                                         labelForEachClass, List<Double> probabilityA, List<Double> probabilityB, List<Integer>
                                          numberOfSVforEachClass, int numberOfClasses, int amountOfSupportVectors) {
 
         this(svmConfigurationBuilder, probabilityEstimates, rhoConstants, labelForEachClass, probabilityA, probabilityB,
                 numberOfSVforEachClass, numberOfClasses, amountOfSupportVectors, null, null);
     }
 
+    /**
+     * Full constructor that creates a native model including support vectors and coefficients.
+     *
+     * @param svmConfigurationBuilder the configuration builder to derive LIBSVM parameters from
+     * @param probabilityEstimates    1 if probability estimates are enabled, 0 otherwise
+     * @param rhoConstants            the rho constants for the decision functions
+     * @param labelForEachClass       the numeric labels for each class
+     * @param probabilityA            the pairwise probability coefficients A
+     * @param probabilityB            the pairwise probability coefficients B
+     * @param numberOfSVforEachClass  the number of support vectors per class
+     * @param numberOfClasses         the total number of classes
+     * @param amountOfSupportVectors  the total number of support vectors
+     * @param svCoefficients          the support-vector coefficients, keyed by row index; may be {@code null}
+     * @param supportVectors          the support vectors, keyed by row index; may be {@code null}
+     */
     public NativeSvmModelWrapper(SvmConfigurationBuilder svmConfigurationBuilder, int probabilityEstimates,
                                  List<Double> rhoConstants, List<Integer>
-            labelForEachClass, List<Double> probabilityA, List<Double> probabilityB, List<Integer>
+                                         labelForEachClass, List<Double> probabilityA, List<Double> probabilityB, List<Integer>
                                          numberOfSVforEachClass, int numberOfClasses, int amountOfSupportVectors,
                                  Map<Integer, List<Double>> svCoefficients, Map<Integer, List<SvmFeature>>
                                          supportVectors) {

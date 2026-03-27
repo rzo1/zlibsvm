@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,12 +30,17 @@ import libsvm.svm_parameter;
 import java.util.List;
 
 /**
- * An {@link AbstractSvmTool} encapsulates some common issues occurring while working with the LIBSVM library.
- *
- *
+ * Base class for SVM tools (trainers and classifiers), providing shared utilities
+ * for converting between the zlibsvm domain model and native LIBSVM data structures.
  */
 public abstract class AbstractSvmTool {
 
+    /**
+     * Converts an {@link SvmConfiguration} into a native LIBSVM {@link svm_parameter}.
+     *
+     * @param configuration the zlibsvm configuration
+     * @return the equivalent native LIBSVM parameter object
+     */
     public static svm_parameter unwrap(SvmConfiguration configuration) {
         svm_parameter param = new svm_parameter();
 
@@ -60,7 +65,7 @@ public abstract class AbstractSvmTool {
 
         param.weight = ArrayUtils.toPrimitive(weight.toArray(new Double[0]));
 
-        if(configuration.isQuietMode()) {
+        if (configuration.isQuietMode()) {
             svm.svm_set_print_string_function(s -> {
                 //nothing to do here...
             });
@@ -68,6 +73,12 @@ public abstract class AbstractSvmTool {
         return param;
     }
 
+    /**
+     * Converts an {@link SvmDocument}'s features into a native LIBSVM {@link svm_node} array.
+     *
+     * @param document the document whose features to convert
+     * @return an array of native LIBSVM nodes
+     */
     public svm_node[] readProblem(SvmDocument document) {
         List<SvmFeature> svmFeatures = document.getSvmFeatures();
         int size = svmFeatures.size();

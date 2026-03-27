@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,13 +29,19 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *
+ * Default implementation of {@link SvmMetaInformation} that reads metadata
+ * directly from the native LIBSVM {@link svm_model}.
  */
 public class SvmMetaInformationImpl implements SvmMetaInformation {
     private final svm_model svmModel;
     private SvmConfiguration svmConfiguration;
     private final String modelName;
 
+    /**
+     * @param svmModel          the native model wrapper
+     * @param svmConfiguration  the configuration used to train this model
+     * @param modelName         a user-assigned name identifying this model
+     */
     public SvmMetaInformationImpl(NativeSvmModelWrapper svmModel, SvmConfiguration svmConfiguration, String modelName) {
         this.svmModel = svmModel.getSvmModel();
         this.svmConfiguration = svmConfiguration;

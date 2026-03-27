@@ -31,8 +31,10 @@ import java.io.Serializable;
  */
 public interface SvmFeature extends Comparable<SvmFeature>, Serializable {
 
+    /** @return the unique index of this feature within the corpus (1-based in LIBSVM format) */
     int getIndex();
 
+    /** @return the numeric value of this feature */
     double getValue();
 
 }

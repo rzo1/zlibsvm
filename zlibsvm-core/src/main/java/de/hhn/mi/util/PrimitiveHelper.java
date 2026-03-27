@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,10 +30,18 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * A little helper to convert 2d arrays of double and {@link SvmFeature svm features} to maps and the other way around.
+ * Utility for converting between LIBSVM's native 2D arrays ({@link svm_node[][]}, {@code double[][]})
+ * and the higher-level {@link Map}-based representations used by the zlibsvm domain model.
  */
 public class PrimitiveHelper {
 
+    /**
+     * Converts a map of {@link SvmFeature} lists to a 2D {@link svm_node} array
+     * suitable for LIBSVM. Keys are sorted in ascending order.
+     *
+     * @param svmFeatureMap the feature map, keyed by row index
+     * @return a 2D array of native LIBSVM nodes
+     */
     public static svm_node[][] svmFeatureMapTo2dArray(Map<Integer, List<SvmFeature>> svmFeatureMap) {
         final List<Integer> sortedKeys = new ArrayList<>(svmFeatureMap.keySet());
         Collections.sort(sortedKeys);
@@ -52,6 +60,12 @@ public class PrimitiveHelper {
         return feature2dArray;
     }
 
+    /**
+     * Converts a 2D {@link svm_node} array to a map of {@link SvmFeature} lists, keyed by row index (0-based).
+     *
+     * @param svmFeatures the native LIBSVM 2D node array
+     * @return a map where each key is a row index and each value is the corresponding feature list
+     */
     public static Map<Integer, List<SvmFeature>> svmFeature2dArrayToMap(svm_node[][] svmFeatures) {
         final Map<Integer, List<SvmFeature>> map = new HashMap<>();
         for (int i = 0; i < svmFeatures.length; i++) {
@@ -67,6 +81,12 @@ public class PrimitiveHelper {
         return map;
     }
 
+    /**
+     * Converts a map of {@link Double} lists to a 2D {@code double} array. Keys are sorted in ascending order.
+     *
+     * @param doubleMap the double map, keyed by row index
+     * @return a 2D primitive double array
+     */
     public static double[][] doubleMapTo2dArray(Map<Integer, List<Double>> doubleMap) {
         final List<Integer> sortedKeys = new ArrayList<>(doubleMap.keySet());
         Collections.sort(sortedKeys);
@@ -81,6 +101,12 @@ public class PrimitiveHelper {
         return double2dArray;
     }
 
+    /**
+     * Converts a 2D {@code double} array to a map of {@link Double} lists, keyed by row index (0-based).
+     *
+     * @param doubleArray the 2D primitive double array
+     * @return a map where each key is a row index and each value is the corresponding double list
+     */
     public static Map<Integer, List<Double>> double2dArrayToMap(double[][] doubleArray) {
         final Map<Integer, List<Double>> map = new HashMap<>();
         for (int i = 0; i < doubleArray.length; i++) {

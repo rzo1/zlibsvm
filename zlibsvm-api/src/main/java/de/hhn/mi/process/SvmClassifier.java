@@ -26,9 +26,10 @@ import de.hhn.mi.exception.ClassificationCoreException;
 import java.util.List;
 
 /**
- * A Classifier using LIBSVM for classification.
- *
- *
+ * Classifies {@link SvmDocument documents} using a pre-trained LIBSVM model.
+ * <p>
+ * Supports both standard prediction and probability-estimate mode
+ * (for {@link SvmType#C_SVC} and {@link SvmType#NU_SVC}).
  */
 public interface SvmClassifier {
 

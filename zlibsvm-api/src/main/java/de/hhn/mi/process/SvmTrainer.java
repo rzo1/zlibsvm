@@ -25,9 +25,10 @@ import de.hhn.mi.domain.SvmModel;
 import java.util.List;
 
 /**
- * A trainer to use with LIBSVM.
- *
- *
+ * Trains an SVM model from a set of labeled {@link SvmDocument documents} using LIBSVM.
+ * <p>
+ * Optionally supports n-fold cross-validation when enabled in the
+ * {@link de.hhn.mi.configuration.SvmConfiguration}.
  */
 public interface SvmTrainer {
 

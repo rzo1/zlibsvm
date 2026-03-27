@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,15 +34,21 @@ import org.slf4j.Logger;
 
 import java.util.List;
 
+/**
+ * Default {@link SvmTrainer} implementation that delegates to LIBSVM for model training
+ * and optional cross-validation.
+ */
 public class SvmTrainerImpl extends AbstractSvmTrainer {
 
     private static final Logger logger = org.slf4j.LoggerFactory
             .getLogger(SvmTrainerImpl.class);
 
-
     /**
-     * @param configuration must not be {@code null}       .
-     * @throws AssertionError if a given parameter is invalid.
+     * Creates a trainer with the given configuration.
+     *
+     * @param configuration the SVM configuration; must not be {@code null}
+     * @param modelName     a user-assigned name for the resulting model; must not be {@code null}
+     * @throws AssertionError if any parameter is {@code null}
      */
     public SvmTrainerImpl(SvmConfiguration configuration, String modelName) {
         super(configuration, modelName);

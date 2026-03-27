@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,9 +23,10 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * A {@link SvmDocument} is the numeric representation of a textual document.
- *
- *
+ * A numeric feature-vector representation of a document, suitable for SVM training or classification.
+ * <p>
+ * Each document holds a list of {@link SvmFeature features} and, after classification,
+ * one or more {@link SvmClassLabel class labels} with associated probabilities.
  */
 public interface SvmDocument extends Serializable {
 
@@ -41,7 +42,7 @@ public interface SvmDocument extends Serializable {
 
     /**
      * @return a list containing all {@link SvmClassLabel labels} of this {@link SvmDocument document}. It is empty, if
-     *         this document is not classified yet.
+     * this document is not classified yet.
      */
     List<SvmClassLabel> getAllClassLabels();
 

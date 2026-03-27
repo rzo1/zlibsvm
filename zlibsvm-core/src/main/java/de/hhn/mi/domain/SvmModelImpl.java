@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,7 +28,10 @@ import java.util.Map;
 
 
 /**
- *
+ * Default implementation of {@link SvmModel} backed by a native LIBSVM {@link svm_model}.
+ * <p>
+ * Reconstructs the full {@link de.hhn.mi.configuration.SvmConfiguration} from the native
+ * model parameters via {@link SvmConfigurationImpl#fromNativeParameter}.
  */
 public class SvmModelImpl implements SvmModel {
 
@@ -36,8 +39,11 @@ public class SvmModelImpl implements SvmModel {
     private final svm_model svmModel;
 
     /**
-     * @param svmModel must not be {@code null}
-     * @throws AssertionError if a given parameter is invalid.
+     * Creates a new model from a native LIBSVM model wrapper.
+     *
+     * @param modelName a user-assigned name identifying this model
+     * @param svmModel  the native model wrapper; must not be {@code null}
+     * @throws AssertionError if {@code svmModel} is {@code null}
      */
     public SvmModelImpl(String modelName, NativeSvmModelWrapper svmModel) {
         assert (svmModel != null);

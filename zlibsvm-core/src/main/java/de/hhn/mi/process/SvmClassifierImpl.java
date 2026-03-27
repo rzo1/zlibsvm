@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,13 +34,20 @@ import java.util.List;
 
 
 /**
- * (partly)
+ * Default {@link SvmClassifier} implementation that delegates to LIBSVM for prediction.
+ * Supports both standard classification and probability-estimate mode.
  */
 public class SvmClassifierImpl extends AbstractSvmClassifier {
 
     private static final Logger logger = org.slf4j.LoggerFactory
             .getLogger(SvmClassifierImpl.class);
 
+    /**
+     * Creates a classifier backed by the given trained model.
+     *
+     * @param svmModel the trained SVM model; must not be {@code null}
+     * @throws AssertionError if {@code svmModel} is {@code null}
+     */
     public SvmClassifierImpl(SvmModel svmModel) {
         super(svmModel);
     }
@@ -80,8 +87,8 @@ public class SvmClassifierImpl extends AbstractSvmClassifier {
                     || svmType == SvmType.NU_SVR) {
                 logger
                         .info("Prob. model for test data: target value = predicted value + z,  " +
-                                "z: Laplace distribution e^(-|z|/sigma)/(2sigma),sigma={}",
-                                 svm.svm_get_svr_probability(getSvmModel()));
+                                        "z: Laplace distribution e^(-|z|/sigma)/(2sigma),sigma={}",
+                                svm.svm_get_svr_probability(getSvmModel()));
             } else {
                 svm.svm_get_labels(getSvmModel(), labels);
             }

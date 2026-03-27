@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,7 +22,15 @@ package de.hhn.mi.configuration;
 import de.hhn.mi.exception.ClassificationCoreException;
 
 /**
+ * Enumerates the SVM formulations supported by LIBSVM.
  *
+ * <ul>
+ *   <li>{@link #C_SVC} — C-Support Vector Classification (multi-class)</li>
+ *   <li>{@link #NU_SVC} — nu-Support Vector Classification (multi-class)</li>
+ *   <li>{@link #ONE_CLASS} — one-class SVM (distribution estimation)</li>
+ *   <li>{@link #EPSILON_SVR} — epsilon-Support Vector Regression</li>
+ *   <li>{@link #NU_SVR} — nu-Support Vector Regression</li>
+ * </ul>
  */
 public enum SvmType {
 
@@ -34,24 +42,29 @@ public enum SvmType {
         this.numericType = numericType;
     }
 
+    /**
+     * @return the LIBSVM numeric identifier for this SVM type
+     */
     public int getNumericType() {
         return numericType;
     }
 
     /**
-     * @param svmType the numeric svm type
-     * @return the fitting {@link SvmType}
-     * @throws ClassificationCoreException if there is no kernel for the given argument.
+     * Resolves an {@link SvmType} from its LIBSVM numeric identifier.
+     *
+     * @param svmType the numeric svm type (0-4)
+     * @return the corresponding {@link SvmType}
+     * @throws ClassificationCoreException if the given value does not map to a known SVM type
      */
     public static SvmType getByValue(int svmType) {
-      return switch (svmType) {
-        case 0 -> C_SVC;
-        case 1 -> NU_SVC;
-        case 2 -> ONE_CLASS;
-        case 3 -> EPSILON_SVR;
-        case 4 -> NU_SVR;
-        default -> throw new ClassificationCoreException("unknown svm type");
-      };
+        return switch (svmType) {
+            case 0 -> C_SVC;
+            case 1 -> NU_SVC;
+            case 2 -> ONE_CLASS;
+            case 3 -> EPSILON_SVR;
+            case 4 -> NU_SVR;
+            default -> throw new ClassificationCoreException("unknown svm type");
+        };
 
     }
 
