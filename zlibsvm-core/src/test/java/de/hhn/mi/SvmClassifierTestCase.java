@@ -57,10 +57,10 @@ public class SvmClassifierTestCase {
         // because they are not needed.
         List<SvmDocument> modelDocuments = new TestInputReader().readFileProblem("mushroom", false);
 
-        ownModel = new SvmTrainerImpl(new SvmConfigurationImpl.Builder().build(), MODEL_NAME).train
-                (modelDocuments);
-        ownPredictionModel = new SvmTrainerImpl(new SvmConfigurationImpl.Builder().setProbability
-                (true).build(), MODEL_NAME).train(modelDocuments);
+        ownModel = new SvmTrainerImpl(new SvmConfigurationImpl.Builder().build(), MODEL_NAME)
+                .train(modelDocuments).orElseThrow();
+        ownPredictionModel = new SvmTrainerImpl(new SvmConfigurationImpl.Builder().setProbability(true)
+                .build(), MODEL_NAME).train(modelDocuments).orElseThrow();
 
         referenceClassifiedDocuments = new TestInputReader().readClassifiedDocuments("mushroom-outcome", false);
 

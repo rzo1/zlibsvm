@@ -27,6 +27,7 @@ import libsvm.svm_parameter;
 import libsvm.svm_problem;
 
 import java.util.List;
+import java.util.Optional;
 
 public abstract class AbstractSvmTrainer extends AbstractSvmTool implements SvmTrainer {
 
@@ -57,7 +58,7 @@ public abstract class AbstractSvmTrainer extends AbstractSvmTool implements SvmT
      * {@inheritDoc}
      */
     @Override
-    public SvmModel train(List<SvmDocument> documents) {
+    public Optional<SvmModel> train(List<SvmDocument> documents) {
         if (documents == null || documents.isEmpty()) {
             throw new IllegalArgumentException("documents must not be null or empty");
         }
@@ -67,10 +68,9 @@ public abstract class AbstractSvmTrainer extends AbstractSvmTool implements SvmT
         validateConfiguration();
         if (configuration.getCrossValidation() != 0) {
             crossValidationAccuracy = doCrossValidation(configuration);
-        } else {
-            return getTrainedModel();
+            return Optional.empty();
         }
-        return null;
+        return Optional.of(getTrainedModel());
     }
 
     /**

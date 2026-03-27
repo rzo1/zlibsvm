@@ -23,6 +23,7 @@ import de.hhn.mi.domain.SvmDocument;
 import de.hhn.mi.domain.SvmModel;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Trains an SVM model from a set of labeled {@link SvmDocument documents} using LIBSVM.
@@ -35,15 +36,16 @@ public interface SvmTrainer {
     /**
      * Trains the underlying learning machine with the given documents.
      *
-     * @param documents must not be {@code null}  or an empty {@link List list}.
-     * @return the trained {@link SvmModel model} or {@code null} if cross validation mode is enabled.
+     * @param documents must not be {@code null} or an empty {@link List list}.
+     * @return an {@link Optional} containing the trained {@link SvmModel}, or empty
+     *         if cross-validation mode is enabled (use {@link #getCrossValidationAccuracy()} instead)
      * @throws IllegalArgumentException if a given parameter is invalid.
      */
-
-    SvmModel train(List<SvmDocument> documents);
+    Optional<SvmModel> train(List<SvmDocument> documents);
 
     /**
-     * @return the accuracy of a cross validation performed while training in the interval 0 to 100 or -1, if cross validation mode is not enabled or this method was called before {@link SvmTrainer#train(List)}.
+     * @return the accuracy of the cross-validation in the interval 0 to 100,
+     *         or -1 if cross-validation mode is not enabled or {@link #train(List)} has not been called yet
      */
     double getCrossValidationAccuracy();
 }

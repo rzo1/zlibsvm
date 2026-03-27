@@ -117,7 +117,7 @@ public class SvmTrainingTestCase {
         SvmTrainer trainer = new SvmTrainerImpl(new SvmConfigurationImpl.Builder().build(),
                 MODEL_NAME);
 
-        SvmModel ownModel = trainer.train(svmDocuments);
+        SvmModel ownModel = trainer.train(svmDocuments).orElseThrow();
 
         //checking equality between the two models without using an own object equals method because of defining an
         // DELTA for floating point issues.
