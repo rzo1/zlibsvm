@@ -35,7 +35,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 /**
@@ -198,5 +201,46 @@ public class SvmTrainingTestCase {
         }
     }
 
+    /**
+     * Verifies that cross-validation mode returns an empty Optional and produces
+     * a meaningful accuracy value.
+     */
+    @Test
+    public void testCrossValidationReturnsEmptyOptionalWithAccuracy() {
+        SvmTrainer trainer = new SvmTrainerImpl(
+                new SvmConfigurationImpl.Builder()
+                        .setCrossValidation(true, 5)
+                        .build(),
+                MODEL_NAME);
+
+        Optional<SvmModel> result = trainer.train(svmDocuments);
+
+        assertTrue(result.isEmpty(), "Cross-validation should not produce a model");
+
+        double accuracy = trainer.getCrossValidationAccuracy();
+        assertTrue(accuracy > 0 && accuracy <= 100,
+                "Cross-validation accuracy should be in (0, 100], was: " + accuracy);
+    }
+
+    /**
+     * Verifies that cross-validation with different nFold values produces reasonable results.
+     */
+    @Test
+    public void testCrossValidationWithDifferentFolds() {
+        for (int nFold : new int[]{2, 5, 10}) {
+            SvmTrainer trainer = new SvmTrainerImpl(
+                    new SvmConfigurationImpl.Builder()
+                            .setCrossValidation(true, nFold)
+                            .build(),
+                    MODEL_NAME);
+
+            Optional<SvmModel> result = trainer.train(svmDocuments);
+            assertTrue(result.isEmpty());
+
+            double accuracy = trainer.getCrossValidationAccuracy();
+            assertTrue(accuracy > 50,
+                    nFold + "-fold CV accuracy should be > 50% on mushroom data, was: " + accuracy);
+        }
+    }
 
 }
