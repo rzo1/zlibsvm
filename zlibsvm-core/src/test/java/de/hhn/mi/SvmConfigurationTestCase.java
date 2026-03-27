@@ -38,12 +38,12 @@ public class SvmConfigurationTestCase {
         try {
             builder.setDegree(-1);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
@@ -52,12 +52,12 @@ public class SvmConfigurationTestCase {
         try {
             builder.setGamma(-1.0d);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
@@ -66,12 +66,12 @@ public class SvmConfigurationTestCase {
         try {
             builder.setNu(-1.0d);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
@@ -80,12 +80,12 @@ public class SvmConfigurationTestCase {
         try {
             builder.setNu(1.1d);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
@@ -94,12 +94,12 @@ public class SvmConfigurationTestCase {
         try {
             builder.setCacheSize(-1);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
@@ -108,12 +108,12 @@ public class SvmConfigurationTestCase {
         try {
             builder.setCost(0.0d);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
@@ -122,12 +122,12 @@ public class SvmConfigurationTestCase {
         try {
             builder.setEpsilon(0.0d);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
@@ -136,12 +136,12 @@ public class SvmConfigurationTestCase {
         try {
             builder.setP(-1.0d);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
@@ -150,12 +150,12 @@ public class SvmConfigurationTestCase {
         try {
             builder.setCrossValidation(true, 1);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)

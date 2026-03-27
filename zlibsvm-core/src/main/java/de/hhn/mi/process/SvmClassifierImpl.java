@@ -46,7 +46,7 @@ public class SvmClassifierImpl extends AbstractSvmClassifier {
      * Creates a classifier backed by the given trained model.
      *
      * @param svmModel the trained SVM model; must not be {@code null}
-     * @throws AssertionError if {@code svmModel} is {@code null}
+     * @throws IllegalArgumentException if {@code svmModel} is {@code null}
      */
     public SvmClassifierImpl(SvmModel svmModel) {
         super(svmModel);
@@ -57,8 +57,9 @@ public class SvmClassifierImpl extends AbstractSvmClassifier {
      */
     @Override
     public List<SvmDocument> classify(List<SvmDocument> documents, boolean probabilityEstimates) {
-        assert (documents != null);
-        assert (!documents.isEmpty());
+        if (documents == null || documents.isEmpty()) {
+            throw new IllegalArgumentException("documents must not be null or empty");
+        }
 
         if (probabilityEstimates) {
             if (svm.svm_check_probability_model(getSvmModel()) == 0) {

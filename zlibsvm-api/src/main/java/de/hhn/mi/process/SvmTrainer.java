@@ -37,7 +37,7 @@ public interface SvmTrainer {
      *
      * @param documents must not be {@code null}  or an empty {@link List list}.
      * @return the trained {@link SvmModel model} or {@code null} if cross validation mode is enabled.
-     * @throws AssertionError Thrown if a given parameter is invalid.
+     * @throws IllegalArgumentException if a given parameter is invalid.
      */
 
     SvmModel train(List<SvmDocument> documents);

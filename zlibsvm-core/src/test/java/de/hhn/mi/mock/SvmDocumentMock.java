@@ -55,7 +55,9 @@ public class SvmDocumentMock implements SvmDocument {
 
     @Override
     public void addClassLabel(SvmClassLabel classLabel) {
-        assert (classLabel != null);
+        if (classLabel == null) {
+            throw new IllegalArgumentException("classLabel must not be null");
+        }
         this.classLabels.add(classLabel);
     }
 

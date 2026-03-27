@@ -291,7 +291,9 @@ public class SvmConfigurationImpl implements SvmConfiguration {
          */
         @Override
         public SvmConfigurationBuilder setDegree(int degree) {
-            assert (degree >= 0);
+            if (degree < 0) {
+                throw new IllegalArgumentException("degree must be >= 0");
+            }
             this.degree = degree;
             return this;
         }
@@ -301,7 +303,9 @@ public class SvmConfigurationImpl implements SvmConfiguration {
          */
         @Override
         public SvmConfigurationBuilder setGamma(double gamma) {
-            assert (gamma >= 0);
+            if (gamma < 0) {
+                throw new IllegalArgumentException("gamma must be >= 0");
+            }
             this.gamma = gamma;
             return this;
         }
@@ -321,7 +325,9 @@ public class SvmConfigurationImpl implements SvmConfiguration {
          */
         @Override
         public SvmConfigurationBuilder setNu(double nu) {
-            assert ((nu > 0) && (nu <= 1));
+            if (nu <= 0 || nu > 1) {
+                throw new IllegalArgumentException("nu must be > 0 and <= 1");
+            }
             this.nu = nu;
             return this;
         }
@@ -331,7 +337,9 @@ public class SvmConfigurationImpl implements SvmConfiguration {
          */
         @Override
         public SvmConfigurationBuilder setCacheSize(double cacheSize) {
-            assert (cacheSize > 0);
+            if (cacheSize <= 0) {
+                throw new IllegalArgumentException("cacheSize must be > 0");
+            }
             this.cacheSize = cacheSize;
             return this;
         }
@@ -341,7 +349,9 @@ public class SvmConfigurationImpl implements SvmConfiguration {
          */
         @Override
         public SvmConfigurationBuilder setCost(double cost) {
-            assert (cost > 0);
+            if (cost <= 0) {
+                throw new IllegalArgumentException("cost must be > 0");
+            }
             this.cost = cost;
             return this;
         }
@@ -351,7 +361,9 @@ public class SvmConfigurationImpl implements SvmConfiguration {
          */
         @Override
         public SvmConfigurationBuilder setEpsilon(double epsilon) {
-            assert (epsilon > 0);
+            if (epsilon <= 0) {
+                throw new IllegalArgumentException("epsilon must be > 0");
+            }
             this.eps = epsilon;
             return this;
         }
@@ -361,7 +373,9 @@ public class SvmConfigurationImpl implements SvmConfiguration {
          */
         @Override
         public SvmConfigurationBuilder setP(double p) {
-            assert (p >= 0);
+            if (p < 0) {
+                throw new IllegalArgumentException("p must be >= 0");
+            }
             this.p = p;
             return this;
         }
@@ -414,7 +428,9 @@ public class SvmConfigurationImpl implements SvmConfiguration {
          */
         @Override
         public SvmConfigurationBuilder setCrossValidation(boolean crossValidation, int nFold) {
-            assert (!crossValidation || nFold >= 2);
+            if (crossValidation && nFold < 2) {
+                throw new IllegalArgumentException("nFold must be >= 2 when cross-validation is enabled");
+            }
             this.crossValidation = crossValidation ? 1 : 0;
             this.nFold = nFold;
             return this;

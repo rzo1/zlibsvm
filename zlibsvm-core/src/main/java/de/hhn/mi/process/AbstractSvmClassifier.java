@@ -38,10 +38,12 @@ abstract class AbstractSvmClassifier extends AbstractSvmTool implements SvmClass
 
     /**
      * @param svmModel the trained model; must not be {@code null}
-     * @throws AssertionError if {@code svmModel} is {@code null}
+     * @throws IllegalArgumentException if {@code svmModel} is {@code null}
      */
     AbstractSvmClassifier(SvmModel svmModel) {
-        assert (svmModel != null);
+        if (svmModel == null) {
+            throw new IllegalArgumentException("svmModel must not be null");
+        }
         this.svmModel = unwrap(svmModel);
     }
 

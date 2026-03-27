@@ -48,7 +48,7 @@ public interface SvmDocument extends Serializable {
 
     /**
      * @param classLabel must not be {@code null}
-     * @throws AssertionError if a given parameter is invalid.
+     * @throws IllegalArgumentException if a given parameter is invalid.
      */
     void addClassLabel(SvmClassLabel classLabel);
 }

@@ -43,10 +43,12 @@ public class SvmModelImpl implements SvmModel {
      *
      * @param modelName a user-assigned name identifying this model
      * @param svmModel  the native model wrapper; must not be {@code null}
-     * @throws AssertionError if {@code svmModel} is {@code null}
+     * @throws IllegalArgumentException if {@code svmModel} is {@code null}
      */
     public SvmModelImpl(String modelName, NativeSvmModelWrapper svmModel) {
-        assert (svmModel != null);
+        if (svmModel == null) {
+            throw new IllegalArgumentException("svmModel must not be null");
+        }
         this.svmModel = svmModel.getSvmModel();
         svmMetaInformation = new SvmMetaInformationImpl(svmModel,
                 SvmConfigurationImpl.fromNativeParameter(this.svmModel.param), modelName);

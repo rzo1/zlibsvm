@@ -61,7 +61,7 @@ public interface SvmConfigurationBuilder extends Serializable {
      *
      * @param degree must be {@code >= 0}
      * @return this {@link SvmConfigurationBuilder builder}
-     * @throws AssertionError if the given parameter is invalid.
+     * @throws IllegalArgumentException if the given parameter is invalid.
      */
     SvmConfigurationBuilder setDegree(int degree);
 
@@ -70,7 +70,7 @@ public interface SvmConfigurationBuilder extends Serializable {
      *
      * @param gamma must be {@code >= 0}
      * @return this {@link SvmConfigurationBuilder builder}
-     * @throws AssertionError if the given parameter is invalid.
+     * @throws IllegalArgumentException if the given parameter is invalid.
      */
     SvmConfigurationBuilder setGamma(double gamma);
 
@@ -87,7 +87,7 @@ public interface SvmConfigurationBuilder extends Serializable {
      *
      * @param nu must be {@code >0  and <= 1 }
      * @return this {@link SvmConfigurationBuilder builder}
-     * @throws AssertionError if the given parameter is invalid.
+     * @throws IllegalArgumentException if the given parameter is invalid.
      */
     SvmConfigurationBuilder setNu(double nu);
 
@@ -96,7 +96,7 @@ public interface SvmConfigurationBuilder extends Serializable {
      *
      * @param cacheSize must be {@code > 0}
      * @return this {@link SvmConfigurationBuilder builder}
-     * @throws AssertionError if the given parameter is invalid.
+     * @throws IllegalArgumentException if the given parameter is invalid.
      */
     SvmConfigurationBuilder setCacheSize(double cacheSize);
 
@@ -107,7 +107,7 @@ public interface SvmConfigurationBuilder extends Serializable {
      *
      * @param cost must be greater than zero
      * @return this {@link SvmConfigurationBuilder builder}
-     * @throws AssertionError if the given parameter is invalid.
+     * @throws IllegalArgumentException if the given parameter is invalid.
      */
     SvmConfigurationBuilder setCost(double cost);
 
@@ -116,7 +116,7 @@ public interface SvmConfigurationBuilder extends Serializable {
      *
      * @param epsilon must be greater than zero
      * @return this {@link SvmConfigurationBuilder builder}
-     * @throws AssertionError if the given parameter is invalid.
+     * @throws IllegalArgumentException if the given parameter is invalid.
      */
     SvmConfigurationBuilder setEpsilon(double epsilon);
 
@@ -125,7 +125,7 @@ public interface SvmConfigurationBuilder extends Serializable {
      *
      * @param p must be {@code p >= 0}.
      * @return this {@link SvmConfigurationBuilder builder}
-     * @throws AssertionError if the given parameter is invalid.
+     * @throws IllegalArgumentException if the given parameter is invalid.
      */
     SvmConfigurationBuilder setP(double p);
 
@@ -160,7 +160,7 @@ public interface SvmConfigurationBuilder extends Serializable {
      * @param crossValidation {@code true} if to use n-fold cross validation mode, else {@code false}
      * @param nFold           must be {@code >= 2}
      * @return this {@link SvmConfigurationBuilder builder}
-     * @throws AssertionError if the given parameter is invalid.
+     * @throws IllegalArgumentException if the given parameter is invalid.
      */
     SvmConfigurationBuilder setCrossValidation(boolean crossValidation, int nFold);
 

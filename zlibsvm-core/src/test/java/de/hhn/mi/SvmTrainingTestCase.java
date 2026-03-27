@@ -64,12 +64,12 @@ public class SvmTrainingTestCase {
         try {
             new SvmTrainerImpl(null, null);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
@@ -78,12 +78,12 @@ public class SvmTrainingTestCase {
         try {
             new SvmTrainerImpl(config, MODEL_NAME).train(null);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
@@ -92,12 +92,12 @@ public class SvmTrainingTestCase {
         try {
             new SvmTrainerImpl(config, MODEL_NAME).train(new ArrayList<>());
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)

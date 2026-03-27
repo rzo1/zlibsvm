@@ -40,7 +40,7 @@ public interface SvmClassifier {
      * @param probabilityEstimates <code>true</code>  for probability estimates else false. Note well,
      *                             that this is only supported by SVC or SVR SVMs(see {@link SvmType})
      * @return classified documents
-     * @throws AssertionError Thrown if a given parameter is invalid.
+     * @throws IllegalArgumentException if a given parameter is invalid.
      * @throws ClassificationCoreException Thrown if the underlying model does not support probability estimates.
      */
     List<SvmDocument> classify(List<SvmDocument> documents, boolean probabilityEstimates);

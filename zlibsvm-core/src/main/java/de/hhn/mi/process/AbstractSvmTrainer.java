@@ -39,11 +39,15 @@ public abstract class AbstractSvmTrainer extends AbstractSvmTool implements SvmT
     /**
      * @param svmConfiguration must not be {@code null}.
      * @param modelName        must not be {@code null}.
-     * @throws AssertionError if a given parameter is invalid.
+     * @throws IllegalArgumentException if a given parameter is invalid.
      */
     AbstractSvmTrainer(SvmConfiguration svmConfiguration, String modelName) {
-        assert (svmConfiguration != null);
-        assert (modelName != null);
+        if (svmConfiguration == null) {
+            throw new IllegalArgumentException("svmConfiguration must not be null");
+        }
+        if (modelName == null) {
+            throw new IllegalArgumentException("modelName must not be null");
+        }
         this.configuration = svmConfiguration;
         this.modelName = modelName;
     }
@@ -54,8 +58,9 @@ public abstract class AbstractSvmTrainer extends AbstractSvmTool implements SvmT
      */
     @Override
     public SvmModel train(List<SvmDocument> documents) {
-        assert (documents != null);
-        assert (!documents.isEmpty());
+        if (documents == null || documents.isEmpty()) {
+            throw new IllegalArgumentException("documents must not be null or empty");
+        }
 
         param = unwrap(configuration);
         problem = loadTrainingProblem(documents);

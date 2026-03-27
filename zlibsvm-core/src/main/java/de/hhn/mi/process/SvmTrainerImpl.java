@@ -48,7 +48,7 @@ public class SvmTrainerImpl extends AbstractSvmTrainer {
      *
      * @param configuration the SVM configuration; must not be {@code null}
      * @param modelName     a user-assigned name for the resulting model; must not be {@code null}
-     * @throws AssertionError if any parameter is {@code null}
+     * @throws IllegalArgumentException if any parameter is {@code null}
      */
     public SvmTrainerImpl(SvmConfiguration configuration, String modelName) {
         super(configuration, modelName);

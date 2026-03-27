@@ -78,12 +78,12 @@ public class SvmClassifierTestCase {
         try {
             new SvmClassifierImpl(null);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
@@ -92,12 +92,12 @@ public class SvmClassifierTestCase {
         try {
             new SvmClassifierImpl(ownModel).classify(null, false);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
@@ -106,12 +106,12 @@ public class SvmClassifierTestCase {
         try {
             new SvmClassifierImpl(ownModel).classify(new ArrayList<>(), false);
             failed = true;
-        } catch (AssertionError ignored) {
+        } catch (IllegalArgumentException ignored) {
 
         } catch (Exception e) {
             fail("caught Exception of type "
                     + e.getClass().getName()
-                    + " instead of an AssertionError. See stacktrace for further information.");
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
         }
 
         if (failed)
