@@ -23,7 +23,11 @@ import de.hhn.mi.domain.SvmFeature;
 import de.hhn.mi.domain.SvmFeatureImpl;
 import libsvm.svm_node;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A little helper to convert 2d arrays of double and {@link SvmFeature svm features} to maps and the other way around.
@@ -31,16 +35,18 @@ import java.util.*;
 public class PrimitiveHelper {
 
     public static svm_node[][] svmFeatureMapTo2dArray(Map<Integer, List<SvmFeature>> svmFeatureMap) {
-        final Set<Integer> set = svmFeatureMap.keySet();
-        final svm_node[][] feature2dArray = new svm_node[set.size()][];
-        for (Integer i : set) {
-            final List<SvmFeature> features = svmFeatureMap.get(i);
-            feature2dArray[i] = new svm_node[svmFeatureMap.get(i).size()];
-            for (int j = 0; j < features.size(); j++) {
+        final List<Integer> sortedKeys = new ArrayList<>(svmFeatureMap.keySet());
+        Collections.sort(sortedKeys);
+        final svm_node[][] feature2dArray = new svm_node[sortedKeys.size()][];
+        for (int idx = 0; idx < sortedKeys.size(); idx++) {
+            final List<SvmFeature> features = svmFeatureMap.get(sortedKeys.get(idx));
+            final int size = features.size();
+            feature2dArray[idx] = new svm_node[size];
+            for (int j = 0; j < size; j++) {
                 final svm_node f = new svm_node();
                 f.index = features.get(j).getIndex();
                 f.value = features.get(j).getValue();
-                feature2dArray[i][j] = f;
+                feature2dArray[idx][j] = f;
             }
         }
         return feature2dArray;
@@ -62,13 +68,14 @@ public class PrimitiveHelper {
     }
 
     public static double[][] doubleMapTo2dArray(Map<Integer, List<Double>> doubleMap) {
-        final Set<Integer> set = doubleMap.keySet();
-        final double[][] double2dArray = new double[set.size()][];
-        for (Integer i : set) {
-            double2dArray[i] = new double[doubleMap.get(i).size()];
-            final List<Double> features = doubleMap.get(i);
-            for (int j = 0; j < features.size(); j++) {
-                double2dArray[i][j] = features.get(j);
+        final List<Integer> sortedKeys = new ArrayList<>(doubleMap.keySet());
+        Collections.sort(sortedKeys);
+        final double[][] double2dArray = new double[sortedKeys.size()][];
+        for (int idx = 0; idx < sortedKeys.size(); idx++) {
+            final List<Double> values = doubleMap.get(sortedKeys.get(idx));
+            double2dArray[idx] = new double[values.size()];
+            for (int j = 0; j < values.size(); j++) {
+                double2dArray[idx][j] = values.get(j);
             }
         }
         return double2dArray;

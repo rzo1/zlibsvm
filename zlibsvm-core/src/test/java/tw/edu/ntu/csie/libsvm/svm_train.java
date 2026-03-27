@@ -51,7 +51,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package tw.edu.ntu.csie.libsvm;
 
-import libsvm.*;
+import libsvm.svm;
+import libsvm.svm_model;
+import libsvm.svm_node;
+import libsvm.svm_parameter;
+import libsvm.svm_print_interface;
+import libsvm.svm_problem;
 
 import java.io.BufferedReader;
 import java.io.IOException;

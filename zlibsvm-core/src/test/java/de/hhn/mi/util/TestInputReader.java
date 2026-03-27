@@ -19,7 +19,13 @@
  */
 package de.hhn.mi.util;
 
-import de.hhn.mi.domain.*;
+import de.hhn.mi.domain.NativeSvmModelWrapper;
+import de.hhn.mi.domain.SvmClassLabelImpl;
+import de.hhn.mi.domain.SvmDocument;
+import de.hhn.mi.domain.SvmFeature;
+import de.hhn.mi.domain.SvmFeatureImpl;
+import de.hhn.mi.domain.SvmModel;
+import de.hhn.mi.domain.SvmModelImpl;
 import de.hhn.mi.mock.SvmDocumentMock;
 import libsvm.svm;
 

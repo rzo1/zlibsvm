@@ -119,11 +119,6 @@ public class SvmTrainingTestCase {
 
         SvmModel ownModel = trainer.train(svmDocuments);
 
-        SvmConfiguration ownConfig = ownModel.getMetaInformation().getSvmConfiguration();
-        SvmConfiguration referenceConfig = ownModel.getMetaInformation().getSvmConfiguration();
-
-        assertEquals(ownConfig, referenceConfig);
-
         //checking equality between the two models without using an own object equals method because of defining an
         // DELTA for floating point issues.
 
@@ -147,8 +142,8 @@ public class SvmTrainingTestCase {
 
         assertEquals(labelForEachClassReference, ownLabelForEachClass);
 
-        List<Double> probabilityAReference = referenceModel.getMetaInformation().getRhoConstants();
-        List<Double> ownProbabilityA = ownModel.getMetaInformation().getRhoConstants();
+        List<Double> probabilityAReference = referenceModel.getMetaInformation().getProbabilityA();
+        List<Double> ownProbabilityA = ownModel.getMetaInformation().getProbabilityA();
 
         assertEquals(probabilityAReference.size(), ownProbabilityA.size());
 
@@ -157,8 +152,8 @@ public class SvmTrainingTestCase {
         }
 
 
-        List<Double> probabilityBReference = referenceModel.getMetaInformation().getRhoConstants();
-        List<Double> ownProbabilityB = ownModel.getMetaInformation().getRhoConstants();
+        List<Double> probabilityBReference = referenceModel.getMetaInformation().getProbabilityB();
+        List<Double> ownProbabilityB = ownModel.getMetaInformation().getProbabilityB();
 
         assertEquals(probabilityBReference.size(), ownProbabilityB.size());
 

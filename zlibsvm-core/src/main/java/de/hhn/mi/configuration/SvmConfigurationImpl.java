@@ -20,6 +20,7 @@
 package de.hhn.mi.configuration;
 
 import de.hhn.mi.shade.org.apache.commons.lang3.ArrayUtils;
+import libsvm.svm_parameter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -69,6 +70,38 @@ public class SvmConfigurationImpl implements SvmConfiguration {
 
         this.nFold = builder.nFold;
         this.quietMode = builder.quietMode;
+    }
+
+    private SvmConfigurationImpl(svm_parameter param) {
+        this.svmType = SvmType.getByValue(param.svm_type);
+        this.kernelType = KernelType.getByValue(param.kernel_type);
+        this.degree = param.degree;
+        this.gamma = param.gamma;
+        this.coef0 = param.coef0;
+        this.nu = param.nu;
+        this.cacheSize = param.cache_size;
+        this.cost = param.C;
+        this.eps = param.eps;
+        this.p = param.p;
+        this.shrinking = param.shrinking;
+        this.probability = param.probability;
+        this.nrWeight = param.nr_weight;
+        this.crossValidation = 0;
+        this.weightLabel = param.weight_label != null ? param.weight_label.clone() : new int[0];
+        this.weight = param.weight != null ? param.weight.clone() : new double[0];
+        this.nFold = 0;
+        this.quietMode = true;
+    }
+
+    /**
+     * Creates a {@link SvmConfiguration} directly from a native {@link svm_parameter},
+     * bypassing builder validation since native values are already validated by LIBSVM.
+     *
+     * @param param the native svm_parameter
+     * @return a new SvmConfigurationImpl
+     */
+    public static SvmConfigurationImpl fromNativeParameter(svm_parameter param) {
+        return new SvmConfigurationImpl(param);
     }
 
     @Override

@@ -22,7 +22,7 @@ package de.hhn.mi;
 import de.hhn.mi.configuration.SvmConfigurationImpl;
 import de.hhn.mi.process.SvmTrainerImpl;
 import de.hhn.mi.util.TestInputReader;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import tw.edu.ntu.csie.libsvm.svm_train;
@@ -36,16 +36,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class SvmPerformanceTestCase {
 
-    private static final String MODE_NAME = "TEST";
+    private static final String MODEL_NAME = "TEST";
     private static final Logger logger = org.slf4j.LoggerFactory
             .getLogger(SvmPerformanceTestCase.class);
     private static final double DELTA = 2.2d; // in seconds
 
-    private double referenceTrainingTime = 0.0d;
-    private double referenceVariance = 0.0d;
+    private static double referenceTrainingTime = 0.0d;
+    private static double referenceVariance = 0.0d;
 
-    @BeforeEach
-    public void obtainReferenceTrainingTime() throws IOException {
+    @BeforeAll
+    public static void obtainReferenceTrainingTime() throws IOException {
         String[] args = {"-q", "mushroom"};
         double[] referenceMeasuredValues = new double[5];
         double referenceMeanValue = 0.0d;
@@ -77,7 +77,7 @@ public class SvmPerformanceTestCase {
     @Test
     public void performanceTrainingTime() throws IOException {
         SvmTrainerImpl trainer = new SvmTrainerImpl(new SvmConfigurationImpl.Builder().build(),
-                MODE_NAME);
+                MODEL_NAME);
         double[] measuredValues = new double[5];
         double meanValue = 0.0d;
         for (int i = 0; i < measuredValues.length; i++) {
@@ -111,7 +111,7 @@ public class SvmPerformanceTestCase {
      * @param value the value to round
      * @return the rounded value
      */
-    private double round(double value) {
+    private static double round(double value) {
         return Math.round(value * Math.pow(10, 3)) / Math.pow(10, 3);
     }
 
@@ -122,7 +122,7 @@ public class SvmPerformanceTestCase {
      * @param meanValue the mean value corresponding to the given values.
      * @return the standard deviation
      */
-    private double calculateStandardDeviation(double[] values, double meanValue) {
+    private static double calculateStandardDeviation(double[] values, double meanValue) {
         double variance = 0.0d;
         for (double value : values) {
             variance += Math.pow(meanValue - value, 2);

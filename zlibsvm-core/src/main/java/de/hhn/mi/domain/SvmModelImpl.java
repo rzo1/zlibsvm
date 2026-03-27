@@ -19,12 +19,9 @@
  */
 package de.hhn.mi.domain;
 
-import de.hhn.mi.configuration.KernelType;
 import de.hhn.mi.configuration.SvmConfigurationImpl;
-import de.hhn.mi.configuration.SvmType;
 import de.hhn.mi.util.PrimitiveHelper;
 import libsvm.svm_model;
-import libsvm.svm_parameter;
 
 import java.util.List;
 import java.util.Map;
@@ -45,11 +42,8 @@ public class SvmModelImpl implements SvmModel {
     public SvmModelImpl(String modelName, NativeSvmModelWrapper svmModel) {
         assert (svmModel != null);
         this.svmModel = svmModel.getSvmModel();
-        svm_parameter svmParameter = this.svmModel.param;
-        svmMetaInformation = new SvmMetaInformationImpl(svmModel, new SvmConfigurationImpl.Builder().setSvmType
-                (SvmType.getByValue(svmParameter.svm_type)).setKernelType(KernelType.getByValue(svmParameter
-                .kernel_type)).setDegree(svmParameter.degree).setGamma(svmParameter.gamma).setCoef0(svmParameter
-                .coef0).setProbability(svmParameter.probability == 1).build(), modelName);
+        svmMetaInformation = new SvmMetaInformationImpl(svmModel,
+                SvmConfigurationImpl.fromNativeParameter(this.svmModel.param), modelName);
 
     }
 
