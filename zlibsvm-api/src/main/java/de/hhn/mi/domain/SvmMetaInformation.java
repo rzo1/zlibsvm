@@ -76,44 +76,4 @@ public interface SvmMetaInformation extends Serializable {
      */
     List<Integer> getNumberOfSupportVectorsForEachClass();
 
-    /**
-     * @param svmConfiguration the configuration to set
-     */
-    void setSvmConfiguration(SvmConfiguration svmConfiguration);
-
-    /**
-     * @param numberOfClasses the number of classes
-     */
-    void setNumberOfClasses(int numberOfClasses);
-
-    /**
-     * @param amountOfSupportVectors the total number of support vectors
-     */
-    void setAmountOfSupportVectors(int amountOfSupportVectors);
-
-    /**
-     * @param rhoConstants the rho constants (biases) for the decision functions
-     */
-    void setRhoConstants(List<Double> rhoConstants);
-
-    /**
-     * @param labelForEachClass the numeric labels for each class
-     */
-    void setLabelForEachClass(List<Integer> labelForEachClass);
-
-    /**
-     * @param probabilityA the pairwise probability coefficients A
-     */
-    void setProbabilityA(List<Double> probabilityA);
-
-    /**
-     * @param probabilityB the pairwise probability coefficients B
-     */
-    void setProbabilityB(List<Double> probabilityB);
-
-    /**
-     * @param numberOfSupportVectorsForEachClass the per-class support vector counts
-     */
-    void setNumberOfSupportVectorsForEachClass(List<Integer> numberOfSupportVectorsForEachClass);
-
 }

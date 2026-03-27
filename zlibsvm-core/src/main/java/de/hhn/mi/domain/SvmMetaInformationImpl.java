@@ -34,7 +34,7 @@ import java.util.Objects;
  */
 public class SvmMetaInformationImpl implements SvmMetaInformation {
     private final svm_model svmModel;
-    private SvmConfiguration svmConfiguration;
+    private final SvmConfiguration svmConfiguration;
     private final String modelName;
 
     /**
@@ -98,46 +98,6 @@ public class SvmMetaInformationImpl implements SvmMetaInformation {
     @Override
     public List<Integer> getNumberOfSupportVectorsForEachClass() {
         return svmModel.nSV == null ? new ArrayList<>() : Arrays.asList((ArrayUtils.toObject((svmModel.nSV))));
-    }
-
-    @Override
-    public void setSvmConfiguration(SvmConfiguration svmConfiguration) {
-        this.svmConfiguration = svmConfiguration;
-    }
-
-    @Override
-    public void setNumberOfClasses(int numberOfClasses) {
-        svmModel.nr_class = numberOfClasses;
-    }
-
-    @Override
-    public void setAmountOfSupportVectors(int amountOfSupportVectors) {
-        svmModel.l = amountOfSupportVectors;
-    }
-
-    @Override
-    public void setRhoConstants(List<Double> rhoConstants) {
-        svmModel.rho = (ArrayUtils.toPrimitive(rhoConstants.toArray(new Double[0])));
-    }
-
-    @Override
-    public void setLabelForEachClass(List<Integer> labelForEachClass) {
-        svmModel.label = (ArrayUtils.toPrimitive(labelForEachClass.toArray(new Integer[0])));
-    }
-
-    @Override
-    public void setProbabilityA(List<Double> probabilityA) {
-        svmModel.probA = (ArrayUtils.toPrimitive(probabilityA.toArray(new Double[0])));
-    }
-
-    @Override
-    public void setProbabilityB(List<Double> probabilityB) {
-        svmModel.probB = (ArrayUtils.toPrimitive(probabilityB.toArray(new Double[0])));
-    }
-
-    @Override
-    public void setNumberOfSupportVectorsForEachClass(List<Integer> numberOfSupportVectorsForEachClass) {
-        svmModel.nSV = (ArrayUtils.toPrimitive(numberOfSupportVectorsForEachClass.toArray(new Integer[0])));
     }
 
     @Override
