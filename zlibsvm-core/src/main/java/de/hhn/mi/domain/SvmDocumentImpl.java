@@ -17,34 +17,40 @@
  * limitations under the License.
  * =========================LICENSE_END==================================
  */
-package de.hhn.mi.mock;
-
-import de.hhn.mi.domain.SvmClassLabel;
-import de.hhn.mi.domain.SvmDocument;
-import de.hhn.mi.domain.SvmFeature;
+package de.hhn.mi.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SvmDocumentMock implements SvmDocument {
+/**
+ * Default implementation of {@link SvmDocument}.
+ */
+public class SvmDocumentImpl implements SvmDocument {
 
     private final List<SvmFeature> features;
     private final List<SvmClassLabel> classLabels = new ArrayList<>();
 
-    public SvmDocumentMock(List<SvmFeature> features) {
+    /**
+     * @param features the feature vector for this document; must not be {@code null}
+     */
+    public SvmDocumentImpl(List<SvmFeature> features) {
+        if (features == null) {
+            throw new IllegalArgumentException("features must not be null");
+        }
         this.features = features;
     }
 
+    @Override
     public List<SvmFeature> getSvmFeatures() {
         return Collections.unmodifiableList(features);
     }
 
+    @Override
     public SvmClassLabel getClassLabelWithHighestProbability() {
         if (classLabels.isEmpty()) {
             return null;
         }
-
         return Collections.max(classLabels);
     }
 
@@ -60,6 +66,4 @@ public class SvmDocumentMock implements SvmDocument {
         }
         this.classLabels.add(classLabel);
     }
-
-
 }

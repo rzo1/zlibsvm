@@ -26,7 +26,7 @@ import de.hhn.mi.domain.SvmFeature;
 import de.hhn.mi.domain.SvmFeatureImpl;
 import de.hhn.mi.domain.SvmModel;
 import de.hhn.mi.domain.SvmModelImpl;
-import de.hhn.mi.mock.SvmDocumentMock;
+import de.hhn.mi.domain.SvmDocumentImpl;
 import libsvm.svm;
 
 import java.io.BufferedReader;
@@ -74,11 +74,11 @@ public class TestInputReader {
 
             features.add(sfi);
         }
-        SvmDocument mock = new SvmDocumentMock(features);
+        SvmDocument document = new SvmDocumentImpl(features);
 
         if (!skipClassLabel)
-            mock.addClassLabel(classLabel);
-        return mock;
+            document.addClassLabel(classLabel);
+        return document;
     }
 
     public SvmModel readSvmModel(String svmModel) throws IOException {
@@ -102,7 +102,7 @@ public class TestInputReader {
                 String[] split = line.split(" ");
                 double estimatedClassLabel = Double.parseDouble(split[0]);
 
-                SvmDocument doc = new SvmDocumentMock(new ArrayList<>());
+                SvmDocument doc = new SvmDocumentImpl(new ArrayList<>());
 
 
                 if (predict) {
