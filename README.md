@@ -16,7 +16,7 @@ It wraps the cross-compiled Java code behind a clean API that can be easily inte
 <dependency>
     <groupId>de.hs-heilbronn.mi</groupId>
     <artifactId>zlibsvm-core</artifactId>
-    <version>2.1.2</version>
+    <version>3.0.0</version>
 </dependency>
 ```
 
