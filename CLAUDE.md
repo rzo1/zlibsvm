@@ -4,7 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-zlibsvm is an object-oriented Java wrapper for the LIBSVM machine learning library. It provides a clean API/implementation separation across two Maven modules:
+zlibsvm is an object-oriented Java wrapper for the LIBSVM machine learning library. It provides a clean
+API/implementation separation across two Maven modules:
 
 - **zlibsvm-api** — Interfaces and domain model (no external dependencies)
 - **zlibsvm-core** — Implementation backed by native LIBSVM Java bindings
@@ -35,21 +36,26 @@ mvn clean compile -Pversion-check
 The project follows a strict API/implementation separation:
 
 **API layer** (`de.hhn.mi.*` in zlibsvm-api):
+
 - `domain` — `SvmDocument`, `SvmFeature`, `SvmClassLabel`, `SvmModel`, `SvmMetaInformation`
 - `configuration` — `SvmConfiguration`, `SvmType`, `KernelType`, `SvmConfigurationBuilder`
 - `process` — `SvmTrainer`, `SvmClassifier`
 - `exception` — `ClassificationCoreException`
 
 **Implementation layer** (`de.hhn.mi.*` in zlibsvm-core):
+
 - `SvmConfigurationImpl` uses Builder pattern for constructing LIBSVM parameter sets
-- `SvmTrainerImpl` / `SvmClassifierImpl` extend abstract base classes that handle conversion between domain objects and native LIBSVM structures (`svm_problem`, `svm_model`)
+- `SvmTrainerImpl` / `SvmClassifierImpl` extend abstract base classes that handle conversion between domain objects and
+  native LIBSVM structures (`svm_problem`, `svm_model`)
 - `NativeSvmModelWrapper` bridges the domain model to LIBSVM's native model representation
 
 **Key dependencies:** libsvm 3.35, slf4j-api, JUnit 5 (Jupiter)
 
 ## Testing
 
-Tests are in `zlibsvm-core` and use the **mushroom** dataset in `src/test/resources/`. Four test suites: `SvmTrainingTestCase`, `SvmClassifierTestCase`, `SvmConfigurationTestCase`, `SvmPerformanceTestCase`. Tests run with max heap 512MB.
+Tests are in `zlibsvm-core` and use the **mushroom** dataset in `src/test/resources/`. Four test suites:
+`SvmTrainingTestCase`, `SvmClassifierTestCase`, `SvmConfigurationTestCase`, `SvmPerformanceTestCase`. Tests run with max
+heap 512MB.
 
 ## CI
 

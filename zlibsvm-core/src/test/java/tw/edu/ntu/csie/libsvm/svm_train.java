@@ -302,7 +302,7 @@ public class svm_train {
     // read in a problem (in svmlight format)
 
     private void read_problem() throws IOException {
-        try(BufferedReader fp = new BufferedReader(
+        try (BufferedReader fp = new BufferedReader(
                 new InputStreamReader(
                         Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(input_file_name)), StandardCharsets.UTF_8))) {
             Vector<Double> vy = new Vector<>();
