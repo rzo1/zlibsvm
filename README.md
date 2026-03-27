@@ -7,7 +7,7 @@ It wraps the cross-compiled Java code behind a clean API that can be easily inte
 
 ## Requirements
 
-- Java 17+
+- Java 21+
 - Maven 3.9.0+
 
 ## Maven Dependency

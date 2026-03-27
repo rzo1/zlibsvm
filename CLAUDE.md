@@ -29,7 +29,7 @@ mvn clean package -Prelease
 mvn clean compile -Pversion-check
 ```
 
-**Requirements:** Maven 3.8.0+, Java 17
+**Requirements:** Maven 3.8.0+, Java 21
 
 ## Architecture
 
@@ -59,4 +59,4 @@ heap 512MB.
 
 ## CI
 
-GitHub Actions runs `mvn clean package` on JDK 17 (Adopt) for pushes to master and PRs.
+GitHub Actions runs `mvn clean package` on JDK 21 (Temurin) for pushes to master and PRs.

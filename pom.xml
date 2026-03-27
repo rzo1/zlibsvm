@@ -7,7 +7,7 @@
     <groupId>de.hs-heilbronn.mi</groupId>
     <artifactId>zlibsvm</artifactId>
     <packaging>pom</packaging>
-    <version>2.1.3-SNAPSHOT</version>
+    <version>3.0.0-SNAPSHOT</version>
 
     <name>zlibsvm</name>
     <description>A Java binding for the famous LIBSVM library</description>
@@ -63,7 +63,7 @@
 
     <properties>
         <!-- Application settings -->
-        <copyright.year>2025</copyright.year>
+        <copyright.year>2026</copyright.year>
         <license.inceptionYear>2014</license.inceptionYear>
         <license.licenseName>apache_v2</license.licenseName>
 
@@ -73,12 +73,12 @@
         <required.maven.version>[${minimum.maven.version},)</required.maven.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
-        <java.source>17</java.source>
-        <java.target>17</java.target>
+        <java.source>21</java.source>
+        <java.target>21</java.target>
         <maven.compile.encoding>UTF-8</maven.compile.encoding>
         <maven.compiler.target>${java.target}</maven.compiler.target>
 
-        <zlibsvm.version>2.1.3-SNAPSHOT</zlibsvm.version>
+        <zlibsvm.version>3.0.0-SNAPSHOT</zlibsvm.version>
         <libsvm.version>3.35</libsvm.version>
 
         <!-- additional dependencies -->
