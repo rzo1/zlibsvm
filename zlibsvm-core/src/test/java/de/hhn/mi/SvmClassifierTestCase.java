@@ -26,14 +26,14 @@ import de.hhn.mi.process.SvmClassifier;
 import de.hhn.mi.process.SvmClassifierImpl;
 import de.hhn.mi.process.SvmTrainerImpl;
 import de.hhn.mi.util.TestInputReader;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -49,7 +49,7 @@ public class SvmClassifierTestCase {
     private List<SvmDocument> referenceClassifiedDocuments;
     private List<SvmDocument> referenceClassifiedPredictionDocuments;
 
-    @Before
+    @BeforeEach
     public void setup() throws IOException {
         trainingDocuments = new TestInputReader().readFileProblem("mushroom.t", true);        // skip class labels
         // because they are not needed.

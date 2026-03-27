@@ -27,16 +27,16 @@ import de.hhn.mi.domain.SvmModel;
 import de.hhn.mi.process.SvmTrainer;
 import de.hhn.mi.process.SvmTrainerImpl;
 import de.hhn.mi.util.TestInputReader;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  *
@@ -48,7 +48,7 @@ public class SvmTrainingTestCase {
     private static List<SvmDocument> svmDocuments;
     private static SvmModel referenceModel;
 
-    @BeforeClass
+    @BeforeAll
     public static void setup() throws IOException {
         svmDocuments = new TestInputReader().readFileProblem("mushroom", false);
         referenceModel = new TestInputReader().readSvmModel("mushroom-reference");

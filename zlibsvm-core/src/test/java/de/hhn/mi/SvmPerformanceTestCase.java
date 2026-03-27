@@ -22,14 +22,14 @@ package de.hhn.mi;
 import de.hhn.mi.configuration.SvmConfigurationImpl;
 import de.hhn.mi.process.SvmTrainerImpl;
 import de.hhn.mi.util.TestInputReader;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import tw.edu.ntu.csie.libsvm.svm_train;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  *
@@ -44,7 +44,7 @@ public class SvmPerformanceTestCase {
     private double referenceTrainingTime = 0.0d;
     private double referenceVariance = 0.0d;
 
-    @Before
+    @BeforeEach
     public void obtainReferenceTrainingTime() throws IOException {
         String[] args = {"-q", "mushroom"};
         double[] referenceMeasuredValues = new double[5];

@@ -21,9 +21,9 @@ package de.hhn.mi;
 
 import de.hhn.mi.configuration.SvmConfigurationBuilder;
 import de.hhn.mi.configuration.SvmConfigurationImpl;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  *
