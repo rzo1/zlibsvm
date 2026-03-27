@@ -47,6 +47,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+# Generated test artifacts
+*.model
+
 ### Maven template
 target/
 pom.xml.tag
