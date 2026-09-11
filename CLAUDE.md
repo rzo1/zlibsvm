@@ -35,14 +35,14 @@ mvn clean compile -Pversion-check
 
 The project follows a strict API/implementation separation:
 
-**API layer** (`de.hhn.mi.*` in zlibsvm-api):
+**API layer** (`io.github.rzo1.zlibsvm.*` in zlibsvm-api):
 
 - `domain` — `SvmDocument`, `SvmFeature`, `SvmClassLabel`, `SvmModel`, `SvmMetaInformation`
 - `configuration` — `SvmConfiguration`, `SvmType`, `KernelType`, `SvmConfigurationBuilder`
 - `process` — `SvmTrainer`, `SvmClassifier`
 - `exception` — `ClassificationCoreException`
 
-**Implementation layer** (`de.hhn.mi.*` in zlibsvm-core):
+**Implementation layer** (`io.github.rzo1.zlibsvm.*` in zlibsvm-core):
 
 - `SvmConfigurationImpl` uses Builder pattern for constructing LIBSVM parameter sets
 - `SvmTrainerImpl` / `SvmClassifierImpl` extend abstract base classes that handle conversion between domain objects and

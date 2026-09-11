@@ -1,6 +1,6 @@
 # zlibsvm
 
-![Build Status](https://github.com/rzo1/zlibsvm/actions/workflows/main.yml/badge.svg)  ![Maven Central](https://img.shields.io/maven-central/v/de.hs-heilbronn.mi/zlibsvm.svg?style=flat-square)
+![Build Status](https://github.com/rzo1/zlibsvm/actions/workflows/main.yml/badge.svg)  ![Maven Central](https://img.shields.io/maven-central/v/io.github.rzo1/zlibsvm.svg?style=flat-square)
 
 **zlibsvm** is an object-oriented Java binding for the [LIBSVM](https://github.com/cjlin1/libsvm) library.
 It wraps the cross-compiled Java code behind a clean API that can be easily integrated via Apache Maven.
@@ -14,7 +14,7 @@ It wraps the cross-compiled Java code behind a clean API that can be easily inte
 
 ```xml
 <dependency>
-    <groupId>de.hs-heilbronn.mi</groupId>
+    <groupId>io.github.rzo1</groupId>
     <artifactId>zlibsvm-core</artifactId>
     <version>3.0.0</version>
 </dependency>

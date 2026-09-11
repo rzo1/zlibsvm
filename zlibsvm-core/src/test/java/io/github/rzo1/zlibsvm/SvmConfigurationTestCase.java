@@ -1,0 +1,165 @@
+/*-
+ * ========================LICENSE_START=================================
+ * zlibsvm-core
+ * %%
+ * Copyright (C) 2014 - 2019 Heilbronn University - Medical Informatics
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =========================LICENSE_END==================================
+ */
+package io.github.rzo1.zlibsvm;
+
+import io.github.rzo1.zlibsvm.configuration.SvmConfigurationBuilder;
+import io.github.rzo1.zlibsvm.configuration.SvmConfigurationImpl;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.fail;
+
+/**
+ *
+ */
+public class SvmConfigurationTestCase {
+
+    @Test
+    public void testBuildConfigurationWithInvalidParameters() {
+        boolean failed = false;
+        SvmConfigurationBuilder builder = new SvmConfigurationImpl.Builder();
+
+        try {
+            builder.setDegree(-1);
+            failed = true;
+        } catch (IllegalArgumentException ignored) {
+
+        } catch (Exception e) {
+            fail("caught Exception of type "
+                    + e.getClass().getName()
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
+        }
+
+        if (failed)
+            fail("setting a degree < 0 worked");
+
+        try {
+            builder.setGamma(-1.0d);
+            failed = true;
+        } catch (IllegalArgumentException ignored) {
+
+        } catch (Exception e) {
+            fail("caught Exception of type "
+                    + e.getClass().getName()
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
+        }
+
+        if (failed)
+            fail("setting a gamma < 0 worked");
+
+        try {
+            builder.setNu(-1.0d);
+            failed = true;
+        } catch (IllegalArgumentException ignored) {
+
+        } catch (Exception e) {
+            fail("caught Exception of type "
+                    + e.getClass().getName()
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
+        }
+
+        if (failed)
+            fail("setting a nu < 0 worked");
+
+        try {
+            builder.setNu(1.1d);
+            failed = true;
+        } catch (IllegalArgumentException ignored) {
+
+        } catch (Exception e) {
+            fail("caught Exception of type "
+                    + e.getClass().getName()
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
+        }
+
+        if (failed)
+            fail("setting a nu > 1 worked");
+
+        try {
+            builder.setCacheSize(-1);
+            failed = true;
+        } catch (IllegalArgumentException ignored) {
+
+        } catch (Exception e) {
+            fail("caught Exception of type "
+                    + e.getClass().getName()
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
+        }
+
+        if (failed)
+            fail("setting a cache size < 0 worked");
+
+        try {
+            builder.setCost(0.0d);
+            failed = true;
+        } catch (IllegalArgumentException ignored) {
+
+        } catch (Exception e) {
+            fail("caught Exception of type "
+                    + e.getClass().getName()
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
+        }
+
+        if (failed)
+            fail("setting cost <= 0 worked");
+
+        try {
+            builder.setEpsilon(0.0d);
+            failed = true;
+        } catch (IllegalArgumentException ignored) {
+
+        } catch (Exception e) {
+            fail("caught Exception of type "
+                    + e.getClass().getName()
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
+        }
+
+        if (failed)
+            fail("setting eps <= 0 worked");
+
+        try {
+            builder.setP(-1.0d);
+            failed = true;
+        } catch (IllegalArgumentException ignored) {
+
+        } catch (Exception e) {
+            fail("caught Exception of type "
+                    + e.getClass().getName()
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
+        }
+
+        if (failed)
+            fail("setting a p value < 0 worked");
+
+        try {
+            builder.setCrossValidation(true, 1);
+            failed = true;
+        } catch (IllegalArgumentException ignored) {
+
+        } catch (Exception e) {
+            fail("caught Exception of type "
+                    + e.getClass().getName()
+                    + " instead of an IllegalArgumentException. See stacktrace for further information.");
+        }
+
+        if (failed)
+            fail("setting crossValidation with nfold < 2 worked");
+    }
+
+}

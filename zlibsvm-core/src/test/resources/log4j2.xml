@@ -6,7 +6,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="de.hhn.mi" level="info"/>
+        <Logger name="io.github.rzo1.zlibsvm" level="info"/>
 
         <Logger name="tw.edu.ntu.csie.libsvm" level="info"/>
 
