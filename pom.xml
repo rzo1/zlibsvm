@@ -75,7 +75,7 @@
         <!-- additional dependencies -->
         <junit.version>6.1.3</junit.version>
 
-        <slf4j.version>2.0.19</slf4j.version>
+        <slf4j.version>2.0.20</slf4j.version>
         <log4j.version>2.26.1</log4j.version>
 
         <maven.license.plugin>2.7.1</maven.license.plugin>
